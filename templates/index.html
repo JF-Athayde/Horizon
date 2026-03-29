@@ -1,0 +1,148 @@
+{% extends "model.html" %}
+
+{% block title %}Dashboard - Horizon{% endblock %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/dashboard-base.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/dashboard-sidebar.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/dashboard-middle.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/dashboard-actions.css') }}">
+{% endblock %}
+
+{% block header %}
+{% include "header.html" %}
+{% endblock %}
+
+{% block content %}
+<main class="dashboard-page">
+    <aside class="dashboard-sidebar">
+        <div class="card profile-summary">
+            <div class="profile-picture">
+                <img src="{{ url_for('static', filename='assets/jf.png') }}" alt="Foto de Perfil">
+            </div>
+            <h1>Fellipe (JF) Athayde</h1>
+            <h2>Future Global Leader | Tech & Impact</h2>
+            <p>Fortaleza - CE • Brasil</p>
+            <span class="chip">Empreendedorismo Tech | Inovação</span>
+            <div class="global-progress">
+                <span>Score Global: 72%</span>
+                <div class="progress-bar"><span style="width:72%"></span></div>
+            </div>
+        </div>
+
+        <nav class="dashboard-menu">
+            <a href="{{ url_for('home') }}"><img src="{{ url_for('static', filename='icons/dashboard.png') }}" alt="Dashboard"> Dashboard</a>
+            <a href="{{ url_for('profile') }}"><img src="{{ url_for('static', filename='icons/profile.png') }}" alt="Identity"> Identity</a>
+            <a href="{{ url_for('connect') }}"><img src="{{ url_for('static', filename='icons/oportunites.png') }}" alt="Connect"> Connect</a>
+            <a href="{{ url_for('explore') }}"><img src="{{ url_for('static', filename='icons/planet-earth.png') }}" alt="Explore"> Explore</a>
+            <a href="{{ url_for('world') }}"><img src="{{ url_for('static', filename='icons/net.png') }}" alt="World"> World</a>
+            <a href="{{ url_for('future') }}"><img src="{{ url_for('static', filename='icons/star.png') }}" alt="Future"> Future</a>
+        </nav>
+    </aside>
+
+    <section class="dashboard-middle">
+        <div class="job-results-header">
+            <h3><img src="{{ url_for('static', filename='icons/oportunites.png') }}" alt="Vagas"> Vagas Recomendadas</h3>
+            <p>Baseadas no seu perfil e interesses</p>
+        </div>
+
+        <div class="job-list" id="job-list">
+            <div class="job-item" data-category="tech">
+                <div class="job-header">
+                    <div class="job-icon">
+                        <img src="{{ url_for('static', filename='icons/tools.png') }}" alt="Tech">
+                    </div>
+                    <div class="job-title-info">
+                        <h4>Desenvolvedor Full Stack</h4>
+                        <p class="company">TechCorp Inc.</p>
+                        <p class="location">São Paulo, SP • Remoto</p>
+                    </div>
+                    <div class="job-match">
+                        <span class="match">95%</span>
+                    </div>
+                </div>
+                <p class="description">Buscamos desenvolvedor pleno em React e Node.js para projetos inovadores. Tempo integral.</p>
+                <div class="job-footer">
+                    <span class="salary">R$ 8.000 - R$ 12.000</span>
+                    <button class="apply-btn">Candidatar-se</button>
+                </div>
+            </div>
+
+            <div class="job-item" data-category="business">
+                <div class="job-header">
+                    <div class="job-icon">
+                        <img src="{{ url_for('static', filename='icons/estatistics.png') }}" alt="Business">
+                    </div>
+                    <div class="job-title-info">
+                        <h4>Analista de Dados</h4>
+                        <p class="company">Data Insights Ltda</p>
+                        <p class="location">Rio de Janeiro, RJ • Híbrido</p>
+                    </div>
+                    <div class="job-match">
+                        <span class="match">88%</span>
+                    </div>
+                </div>
+                <p class="description">Análise de dados empresariais usando Python e SQL. Experiência com BI obrigatória. Tempo integral, nível pleno.</p>
+                <div class="job-footer">
+                    <span class="salary">R$ 6.000 - R$ 9.000</span>
+                    <button class="apply-btn">Candidatar-se</button>
+                </div>
+            </div>
+
+            <div class="job-item" data-category="design">
+                <div class="job-header">
+                    <div class="job-icon">
+                        <img src="{{ url_for('static', filename='icons/star.png') }}" alt="Design">
+                    </div>
+                    <div class="job-title-info">
+                        <h4>UX/UI Designer</h4>
+                        <p class="company">Creative Studio</p>
+                        <p class="location">Belo Horizonte, MG • Presencial</p>
+                    </div>
+                    <div class="job-match">
+                        <span class="match">92%</span>
+                    </div>
+                </div>
+                <p class="description">Designer criativo para interfaces digitais. Conhecimento em Figma e Adobe XD. Freelance, nível júnior.</p>
+                <div class="job-footer">
+                    <span class="salary">R$ 5.500 - R$ 8.000</span>
+                    <button class="apply-btn">Candidatar-se</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <aside class="dashboard-actions">
+        <div class="card">
+            <h3><img src="{{ url_for('static', filename='icons/estatistics.png') }}" alt="Score"> Score Global de Prontidão</h3>
+            <div class="score-display" id="global-score">72%</div>
+            <div class="mini-progress"><span style="width:72%"></span></div>
+            <p>Baseado em seu perfil único, vídeo autêntico e impacto comprovado.</p>
+        </div>
+
+        <div class="card">
+            <h3><img src="{{ url_for('static', filename='icons/bolt.png') }}" alt="Próximos Passos"> Próximos Passos para o Sucesso</h3>
+            <ol>
+                <li>Grave seu vídeo de apresentação</li>
+                <li>Adicione projetos no portfólio</li>
+                <li>Atualize seus idiomas e certificados</li>
+            </ol>
+            <button id="start-actions">Começar Minha Jornada</button>
+        </div>
+
+        <div class="card">
+            <h3><img src="{{ url_for('static', filename='icons/star.png') }}" alt="Oportunidades"> Oportunidades Prioritárias</h3>
+            <ul>
+                <li>Programa Trainee Global (Shell) - Match 91%</li>
+                <li>Bolsa Pesquisa IA (MIT) - Match 88%</li>
+                <li>Fellowship de Impacto (Ashoka) - Match 86%</li>
+            </ul>
+            <button id="view-all-opportunities">Ver Todas</button>
+        </div>
+    </aside>
+</main>
+{% endblock %}
+
+{% block footer %}
+{% include "footer.html" %}
+{% endblock %}

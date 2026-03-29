@@ -1,0 +1,159 @@
+{% extends 'model.html' %}
+
+{% block title %}Explore - Horizon{% endblock %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/dashboard-base.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/dashboard-middle.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/dashboard-sidebar.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/dashboard-actions.css') }}">
+{% endblock %}
+
+{% block header %}
+{% include 'header.html' %}
+{% endblock %}
+
+{% block content %}
+<main class="dashboard-page">
+    <aside class="dashboard-sidebar">
+        <div class="card profile-summary">
+            <div class="profile-picture">
+                <img src="{{ url_for('static', filename='assets/jf.png') }}" alt="Foto de Perfil">
+            </div>
+            <h1>Fellipe (JF) Athayde</h1>
+            <h2>Future Global Leader | Tech & Impact</h2>
+            <p>Fortaleza - CE • Brasil</p>
+            <span class="chip">Empreendedorismo Tech | Inovação</span>
+            <div class="global-progress">
+                <span>Score Global: 72%</span>
+                <div class="progress-bar"><span style="width:72%"></span></div>
+            </div>
+        </div>
+
+        <nav class="dashboard-menu">
+            <a href="{{ url_for('home') }}"><img src="{{ url_for('static', filename='icons/dashboard.png') }}" alt="Dashboard"> Dashboard</a>
+            <a href="{{ url_for('profile') }}"><img src="{{ url_for('static', filename='icons/profile.png') }}" alt="Identity"> Identity</a>
+            <a href="{{ url_for('connect') }}"><img src="{{ url_for('static', filename='icons/oportunites.png') }}" alt="Connect"> Connect</a>
+            <a href="{{ url_for('explore') }}"><img src="{{ url_for('static', filename='icons/planet-earth.png') }}" alt="Explore"> Explore</a>
+            <a href="{{ url_for('world') }}"><img src="{{ url_for('static', filename='icons/net.png') }}" alt="World"> World</a>
+            <a href="{{ url_for('future') }}"><img src="{{ url_for('static', filename='icons/star.png') }}" alt="Future"> Future</a>
+            <a href="#"><img src="{{ url_for('static', filename='icons/settings.png') }}" alt="Settings"> Settings</a>
+        </nav>
+    </aside>
+
+    <section class="dashboard-middle">
+        <div class="job-results-header">
+            <h3><img src="{{ url_for('static', filename='icons/planet-earth.png') }}" alt="Explore"> Explorar Oportunidades Globais</h3>
+            <p>Descubra oportunidades ao redor do mundo</p>
+        </div>
+
+        <div class="card">
+            <h3>🌍 Mapa Global Interativo</h3>
+            <div style="height: 300px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center; border-radius: 8px;">
+                <p style="color: white; font-size: 18px;">Mapa das oportunidades globais</p>
+                <div style="position: absolute; top: 10px; left: 10px; background: rgba(255,255,255,0.8); padding: 5px; border-radius: 4px;">🔍 Zoom disponível</div>
+            </div>
+        </div>
+
+        <div class="filter-tags">
+            <span class="filter-tag active" data-filter="all">Todas</span>
+            <span class="filter-tag" data-filter="remoto">Remoto</span>
+            <span class="filter-tag" data-filter="presencial">Presencial</span>
+            <span class="filter-tag" data-filter="hibrido">Híbrido</span>
+        </div>
+
+        <div class="job-list" id="job-list">
+            <div class="job-item" data-category="remoto">
+                <div class="job-header">
+                    <div class="job-icon">
+                        <img src="{{ url_for('static', filename='icons/tools.png') }}" alt="Job">
+                    </div>
+                    <div class="job-title-info">
+                        <h4>Desenvolvedor Remoto</h4>
+                        <p class="company">Startup Global</p>
+                        <p class="location">Remoto • Global</p>
+                    </div>
+                    <div class="job-match">
+                        <span class="match">75%</span>
+                    </div>
+                </div>
+                <p class="description">Trabalho remoto em equipe internacional. Foco em desenvolvimento ágil.</p>
+                <div class="job-footer">
+                    <span class="salary">R$ 10.000 - R$ 15.000</span>
+                    <button class="apply-btn">Explorar</button>
+                </div>
+            </div>
+
+            <div class="job-item" data-category="presencial">
+                <div class="job-header">
+                    <div class="job-icon">
+                        <img src="{{ url_for('static', filename='icons/tools.png') }}" alt="Job">
+                    </div>
+                    <div class="job-title-info">
+                        <h4>Engenheiro de Projetos</h4>
+                        <p class="company">Empresa Local</p>
+                        <p class="location">São Paulo, SP • Presencial</p>
+                    </div>
+                    <div class="job-match">
+                        <span class="match">80%</span>
+                    </div>
+                </div>
+                <p class="description">Projetos de infraestrutura urbana. Experiência em AutoCAD obrigatória.</p>
+                <div class="job-footer">
+                    <span class="salary">R$ 8.000 - R$ 12.000</span>
+                    <button class="apply-btn">Explorar</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <aside class="dashboard-actions">
+        <div class="card">
+            <h3><img src="https://via.placeholder.com/20x20?text=F" alt="Filtros"> Filtros de Exploração</h3>
+            <div class="filter-group">
+                <label>País</label>
+                <select id="country-filter">
+                    <option value="all">Todos</option>
+                    <option value="br">Brasil</option>
+                    <option value="us">EUA</option>
+                    <option value="uk">Reino Unido</option>
+                    <option value="global">Global</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label>Área</label>
+                <select id="area-filter">
+                    <option value="all">Todas</option>
+                    <option value="tech">Tecnologia</option>
+                    <option value="business">Negócios</option>
+                    <option value="engineering">Engenharia</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label>Modalidade</label>
+                <select id="modality-filter">
+                    <option value="all">Todas</option>
+                    <option value="remoto">Remoto</option>
+                    <option value="presencial">Presencial</option>
+                    <option value="hibrido">Híbrido</option>
+                </select>
+            </div>
+            <button class="apply-filters-btn">Aplicar Filtros</button>
+        </div>
+
+        <div class="card">
+            <h3><img src="{{ url_for('static', filename='icons/tools.png') }}" alt="Tendências"> Tendências Globais</h3>
+            <ul>
+                <li>IA em Saúde: +25%</li>
+                <li>Sustentabilidade: +18%</li>
+                <li>Trabalho Remoto: +30%</li>
+            </ul>
+            <button>Ver Relatório</button>
+        </div>
+    </aside>
+</main>
+{% endblock %}
+
+{% block footer %}
+{% include 'footer.html' %}
+{% endblock %}

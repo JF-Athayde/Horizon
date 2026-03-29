@@ -1,0 +1,304 @@
+{% extends 'model.html' %}
+
+{% block title %}World - Horizon{% endblock %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/dashboard-base.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/dashboard-middle.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/dashboard-sidebar.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/dashboard-actions.css') }}">
+{% endblock %}
+
+{% block header %}
+{% include 'header.html' %}
+{% endblock %}
+
+{% block content %}
+<main class="dashboard-page">
+    <aside class="dashboard-sidebar">
+        <div class="card profile-summary">
+            <div class="profile-picture">
+                <img src="{{ url_for('static', filename='assets/jf.png') }}" alt="Foto de Perfil">
+            </div>
+            <h1>Fellipe (JF) Athayde</h1>
+            <h2>Future Global Leader | Tech & Impact</h2>
+            <p>Fortaleza - CE • Brasil</p>
+            <span class="chip">Empreendedorismo Tech | Inovação</span>
+            <div class="global-progress">
+                <span>Score Global: 72%</span>
+                <div class="progress-bar"><span style="width:72%"></span></div>
+            </div>
+        </div>
+
+        <nav class="dashboard-menu">
+            <a href="{{ url_for('home') }}"><img src="{{ url_for('static', filename='icons/dashboard.png') }}" alt="Dashboard"> Dashboard</a>
+            <a href="{{ url_for('profile') }}"><img src="{{ url_for('static', filename='icons/profile.png') }}" alt="Identity"> Identity</a>
+            <a href="{{ url_for('connect') }}"><img src="{{ url_for('static', filename='icons/oportunites.png') }}" alt="Connect"> Connect</a>
+            <a href="{{ url_for('explore') }}"><img src="{{ url_for('static', filename='icons/planet-earth.png') }}" alt="Explore"> Explore</a>
+            <a href="{{ url_for('world') }}"><img src="{{ url_for('static', filename='icons/net.png') }}" alt="World"> World</a>
+            <a href="{{ url_for('future') }}"><img src="{{ url_for('static', filename='icons/star.png') }}" alt="Future"> Future</a>
+            <a href="#"><img src="{{ url_for('static', filename='icons/settings.png') }}" alt="Settings"> Settings</a>
+        </nav>
+    </aside>
+
+    <section class="dashboard-middle">
+        <div class="world-header">
+            <div class="world-title">
+                <h3><img src="{{ url_for('static', filename='icons/net.png') }}" alt="World"> Horizon World</h3>
+                <p>Conecte-se com a comunidade global de líderes e inovadores</p>
+            </div>
+            <div class="world-stats">
+                <span>1,247 membros online</span>
+                <span>89 posts hoje</span>
+            </div>
+        </div>
+
+        <div class="world-filters">
+            <button class="filter-btn active" data-filter="all">Tudo</button>
+            <button class="filter-btn" data-filter="projects">Projetos</button>
+            <button class="filter-btn" data-filter="opportunities">Oportunidades</button>
+            <button class="filter-btn" data-filter="success">Sucessos</button>
+            <button class="filter-btn" data-filter="questions">Perguntas</button>
+        </div>
+
+        <div class="create-post-card">
+            <div class="post-author">
+                <img src="{{ url_for('static', filename='assets/jf.png') }}" alt="Você">
+                <span>Fellipe Athayde</span>
+            </div>
+            <textarea placeholder="O que você está pensando? Compartilhe ideias, projetos ou conquistas..." rows="3"></textarea>
+            <div class="post-actions">
+                <div class="post-options">
+                    <button class="post-option"><img src="{{ url_for('static', filename='icons/tools.png') }}" alt="Projeto"> Projeto</button>
+                    <button class="post-option"><img src="{{ url_for('static', filename='icons/star.png') }}" alt="Sucesso"> Sucesso</button>
+                    <button class="post-option"><img src="{{ url_for('static', filename='icons/planet-earth.png') }}" alt="Pergunta"> Pergunta</button>
+                </div>
+                <button class="apply-btn">Postar</button>
+            </div>
+        </div>
+
+        <div class="world-feed">
+            <div class="feed-item" data-type="success">
+                <div class="post-card">
+                    <div class="post-header">
+                        <div class="post-author">
+                            <img src="{{ url_for('static', filename='assets/1.jpg') }}" alt="Maria Silva">
+                            <div class="author-info">
+                                <h4>Maria Silva</h4>
+                                <span class="author-role">Empreendedora Social • São Paulo, SP</span>
+                                <span class="post-time">2h atrás</span>
+                            </div>
+                        </div>
+                        <div class="post-type success">Sucesso</div>
+                    </div>
+                    <div class="post-content">
+                        <p>🎉 Acabei de lançar meu projeto de educação digital! Buscando colaboradores para expandir para outros países. O app já tem 500 usuários ativos e estamos crescendo 20% ao mês!</p>
+                        <div class="post-media">
+                            <img src="https://via.placeholder.com/400x200?text=Projeto+Educa%C3%A7%C3%A3o" alt="Projeto">
+                        </div>
+                    </div>
+                    <div class="post-stats">
+                        <span>❤️ 24 curtidas</span>
+                        <span>💬 8 comentários</span>
+                        <span>🔗 5 compartilhamentos</span>
+                    </div>
+                    <div class="post-actions">
+                        <button class="action-btn"><img src="{{ url_for('static', filename='icons/star.png') }}" alt="Curtir"> Curtir</button>
+                        <button class="action-btn"><img src="{{ url_for('static', filename='icons/net.png') }}" alt="Comentar"> Comentar</button>
+                        <button class="action-btn"><img src="{{ url_for('static', filename='icons/planet-earth.png') }}" alt="Compartilhar"> Compartilhar</button>
+                        <button class="action-btn"><img src="{{ url_for('static', filename='icons/oportunites.png') }}" alt="Conectar"> Conectar</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="feed-item" data-type="opportunity">
+                <div class="post-card">
+                    <div class="post-header">
+                        <div class="post-author">
+                            <img src="{{ url_for('static', filename='assets/2.jpg') }}" alt="João Santos">
+                            <div class="author-info">
+                                <h4>João Santos</h4>
+                                <span class="author-role">Pesquisador • Rio de Janeiro, RJ</span>
+                                <span class="post-time">4h atrás</span>
+                            </div>
+                        </div>
+                        <div class="post-type opportunity">Oportunidade</div>
+                    </div>
+                    <div class="post-content">
+                        <p>🚀 Missão cumprida! Consegui uma bolsa de pesquisa no MIT graças ao Horizon. Obrigado a todos que me apoiaram na jornada! Agora estou recrutando uma equipe para meu projeto de IA sustentável.</p>
+                        <div class="post-tags">
+                            <span class="tag">#Sucesso</span>
+                            <span class="tag">#MIT</span>
+                            <span class="tag">#IA</span>
+                            <span class="tag">#Sustentabilidade</span>
+                        </div>
+                    </div>
+                    <div class="post-stats">
+                        <span>🎉 42 curtidas</span>
+                        <span>💬 15 comentários</span>
+                        <span>🔗 8 compartilhamentos</span>
+                    </div>
+                    <div class="post-actions">
+                        <button class="action-btn"><img src="{{ url_for('static', filename='icons/star.png') }}" alt="Curtir"> Curtir</button>
+                        <button class="action-btn"><img src="{{ url_for('static', filename='icons/net.png') }}" alt="Comentar"> Comentar</button>
+                        <button class="action-btn"><img src="{{ url_for('static', filename='icons/planet-earth.png') }}" alt="Compartilhar"> Compartilhar</button>
+                        <button class="action-btn"><img src="{{ url_for('static', filename='icons/oportunites.png') }}" alt="Conectar"> Conectar</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="feed-item" data-type="project">
+                <div class="post-card">
+                    <div class="post-header">
+                        <div class="post-author">
+                            <img src="{{ url_for('static', filename='assets/3.jpg') }}" alt="Ana Costa">
+                            <div class="author-info">
+                                <h4>Ana Costa</h4>
+                                <span class="author-role">Desenvolvedora • Belo Horizonte, MG</span>
+                                <span class="post-time">6h atrás</span>
+                            </div>
+                        </div>
+                        <div class="post-type project">Projeto</div>
+                    </div>
+                    <div class="post-content">
+                        <p>💡 Procurando equipe para projeto social em comunidades carentes. Foco em tecnologia para inclusão digital. Já temos protótipo funcional e buscamos designers e desenvolvedores front-end!</p>
+                        <div class="project-details">
+                            <div class="detail-item">
+                                <strong>Skills necessárias:</strong> React, UI/UX, Node.js
+                            </div>
+                            <div class="detail-item">
+                                <strong>Compromisso:</strong> 10-15h/semana
+                            </div>
+                            <div class="detail-item">
+                                <strong>Impacto:</strong> 500+ famílias beneficiadas
+                            </div>
+                        </div>
+                    </div>
+                    <div class="post-stats">
+                        <span>🤝 18 interessados</span>
+                        <span>💬 12 comentários</span>
+                        <span>🔗 6 compartilhamentos</span>
+                    </div>
+                    <div class="post-actions">
+                        <button class="action-btn"><img src="{{ url_for('static', filename='icons/star.png') }}" alt="Curtir"> Curtir</button>
+                        <button class="action-btn"><img src="{{ url_for('static', filename='icons/net.png') }}" alt="Comentar"> Comentar</button>
+                        <button class="action-btn"><img src="{{ url_for('static', filename='icons/planet-earth.png') }}" alt="Compartilhar"> Compartilhar</button>
+                        <button class="action-btn interest-btn">Tenho Interesse</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="feed-item" data-type="question">
+                <div class="post-card">
+                    <div class="post-header">
+                        <div class="post-author">
+                            <img src="{{ url_for('static', filename='assets/4.jpg') }}" alt="Carlos Mendes">
+                            <div class="author-info">
+                                <h4>Carlos Mendes</h4>
+                                <span class="author-role">Estudante • Porto Alegre, RS</span>
+                                <span class="post-time">8h atrás</span>
+                            </div>
+                        </div>
+                        <div class="post-type question">Pergunta</div>
+                    </div>
+                    <div class="post-content">
+                        <p>❓ Alguém aqui já fez intercâmbio para trabalhar em startup no Vale do Silício? Quais dicas vocês dão para quem está começando? Experiência com visto, custo de vida, networking... Tudo ajuda!</p>
+                    </div>
+                    <div class="post-stats">
+                        <span>💡 31 respostas</span>
+                        <span>💬 8 comentários</span>
+                        <span>🔗 3 compartilhamentos</span>
+                    </div>
+                    <div class="post-actions">
+                        <button class="action-btn"><img src="{{ url_for('static', filename='icons/star.png') }}" alt="Curtir"> Curtir</button>
+                        <button class="action-btn"><img src="{{ url_for('static', filename='icons/net.png') }}" alt="Comentar"> Responder</button>
+                        <button class="action-btn"><img src="{{ url_for('static', filename='icons/planet-earth.png') }}" alt="Compartilhar"> Compartilhar</button>
+                        <button class="action-btn"><img src="{{ url_for('static', filename='icons/oportunites.png') }}" alt="Conectar"> Conectar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <aside class="dashboard-actions">
+        <div class="card online-users">
+            <h3><img src="{{ url_for('static', filename='icons/net.png') }}" alt="Online"> Membros Online</h3>
+            <div class="online-list">
+                <div class="online-user">
+                    <img src="{{ url_for('static', filename='assets/1.jpg') }}" alt="Maria Silva">
+                    <span>Maria Silva</span>
+                </div>
+                <div class="online-user">
+                    <img src="{{ url_for('static', filename='assets/2.jpg') }}" alt="João Santos">
+                    <span>João Santos</span>
+                </div>
+                <div class="online-user">
+                    <img src="{{ url_for('static', filename='assets/3.jpg') }}" alt="Ana Costa">
+                    <span>Ana Costa</span>
+                </div>
+                <div class="online-user">
+                    <img src="{{ url_for('static', filename='assets/4.jpg') }}" alt="Carlos Mendes">
+                    <span>Carlos Mendes</span>
+                </div>
+            </div>
+            <button class="view-all-btn">Ver Todos Online</button>
+        </div>
+
+        <div class="card trending-topics">
+            <h3><img src="{{ url_for('static', filename='icons/star.png') }}" alt="Trending"> Tópicos em Alta</h3>
+            <div class="trending-list">
+                <div class="trending-item">
+                    <span class="hashtag">#HorizonSuccess</span>
+                    <span class="count">247 posts</span>
+                </div>
+                <div class="trending-item">
+                    <span class="hashtag">#StartupGlobal</span>
+                    <span class="count">189 posts</span>
+                </div>
+                <div class="trending-item">
+                    <span class="hashtag">#ImpactoSocial</span>
+                    <span class="count">156 posts</span>
+                </div>
+                <div class="trending-item">
+                    <span class="hashtag">#IA</span>
+                    <span class="count">134 posts</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="card community-stats">
+            <h3><img src="{{ url_for('static', filename='icons/estatistics.png') }}" alt="Estatísticas"> Estatísticas da Comunidade</h3>
+            <div class="stats-list">
+                <div class="stat-item">
+                    <span class="stat-label">Projetos Ativos</span>
+                    <span class="stat-value">1,247</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Conexões Hoje</span>
+                    <span class="stat-value">89</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Países Representados</span>
+                    <span class="stat-value">47</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Sucessos Compartilhados</span>
+                    <span class="stat-value">523</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="card quick-actions">
+            <h3><img src="{{ url_for('static', filename='icons/tools.png') }}" alt="Ações"> Ações Rápidas</h3>
+            <button class="quick-action-btn"><img src="{{ url_for('static', filename='icons/oportunites.png') }}" alt="Encontrar"> Encontrar Parceiros</button>
+            <button class="quick-action-btn"><img src="{{ url_for('static', filename='icons/planet-earth.png') }}" alt="Explorar"> Explorar Projetos</button>
+            <button class="quick-action-btn"><img src="{{ url_for('static', filename='icons/star.png') }}" alt="Celebrar"> Compartilhar Sucesso</button>
+            <button class="quick-action-btn"><img src="{{ url_for('static', filename='icons/net.png') }}" alt="Perguntar"> Fazer Pergunta</button>
+        </div>
+    </aside>
+</main>
+{% endblock %}
+
+{% block footer %}
+{% include 'footer.html' %}
+{% endblock %}

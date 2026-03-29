@@ -1,0 +1,252 @@
+/* ===== ACTIONS ===== */
+
+.dashboard-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.dashboard-actions .card h3 {
+    margin-top: 0;
+    font-size: 15px;
+    font-weight: 700;
+    color: #202020;
+    letter-spacing: -0.2px;
+}
+
+.dashboard-actions .card h3 img {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+.score-display {
+    font-size: 36px;
+    font-weight: 800;
+    margin: 12px 0;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-align: center;
+}
+
+.mini-progress {
+    background: #e9ecef;
+    height: 8px;
+    border-radius: 2px;
+    overflow: hidden;
+    margin: 10px 0;
+}
+
+.mini-progress span {
+    display: block;
+    height: 100%;
+    background: #28a745;
+}
+
+.dashboard-actions .card p {
+    color: #202020;
+    margin: 8px 0;
+    font-size: 13px;
+}
+
+.dashboard-actions ol {
+    padding-left: 20px;
+    font-size: 13px;
+    color: #202020;
+}
+
+.dashboard-actions li {
+    padding: 6px 0;
+}
+
+.dashboard-actions ul {
+    padding-left: 16px;
+    font-size: 13px;
+    color: #202020;
+    margin: 8px 0;
+    list-style: none;
+}
+
+.dashboard-actions li {
+    padding: 4px 0;
+    padding-left: 20px;
+    position: relative;
+}
+
+.dashboard-actions li:before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: #667eea;
+    font-weight: 600;
+}
+
+/* ===== FEED ===== */
+
+.dashboard-feed {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.feed-item {
+    border-left: 4px solid #667eea;
+    padding-left: 20px;
+}
+
+.feed-item.mission {
+    border-left-color: #ffc107;
+}
+
+.feed-item.community {
+    border-left-color: #28a745;
+}
+
+.feed-item h3 {
+    margin-top: 0;
+    font-size: 16px;
+    font-weight: 700;
+    color: #202020;
+}
+
+.feed-item p {
+    color: #202020;
+    margin: 8px 0;
+    font-size: 13px;
+}
+
+/* ===== WORLD PAGE ACTIONS ===== */
+.online-users .online-list {
+    margin: 16px 0;
+}
+
+.online-user {
+    display: flex;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.online-user:last-child {
+    border-bottom: none;
+}
+
+.online-user img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    margin-right: 12px;
+    border: 2px solid #4CAF50;
+}
+
+.online-user span {
+    font-size: 13px;
+    color: #202020;
+    font-weight: 500;
+}
+
+.view-all-btn {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #202020;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 12px;
+}
+
+.view-all-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.trending-topics .trending-list {
+    margin: 16px 0;
+}
+
+.trending-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.trending-item:last-child {
+    border-bottom: none;
+}
+
+.hashtag {
+    font-size: 13px;
+    color: #667eea;
+    font-weight: 600;
+}
+
+.count {
+    font-size: 11px;
+    color: #202020;
+    opacity: 0.7;
+}
+
+.community-stats .stats-list {
+    margin: 16px 0;
+}
+
+.stat-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.stat-item:last-child {
+    border-bottom: none;
+}
+
+.stat-label {
+    font-size: 13px;
+    color: #202020;
+}
+
+.stat-value {
+    font-size: 14px;
+    font-weight: 700;
+    color: #667eea;
+}
+
+.quick-actions {
+    margin-top: 24px;
+}
+
+.quick-action-btn {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 10px 12px;
+    margin-bottom: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #202020;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.quick-action-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-1px);
+}
+
+.quick-action-btn img {
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+}

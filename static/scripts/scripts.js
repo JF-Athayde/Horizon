@@ -2,7 +2,7 @@
 // ELEMENTOS
 // ================================
 const toggle = document.getElementById("menu-toggle");
-const menu = document.getElementById("menu");
+const menu = document.getElementById("main-nav");
 const overlay = document.getElementById("menu-overlay");
 const progressBar = document.getElementById("progress-bar");
 
@@ -42,7 +42,7 @@ if (overlay) {
 }
 
 // Fechar ao clicar em links
-document.querySelectorAll(".menu a").forEach(link => {
+document.querySelectorAll(".main-nav a").forEach(link => {
     link.addEventListener("click", closeMenu);
 });
 
@@ -227,6 +227,156 @@ tabButtons.forEach(btn => {
             pane.classList.add('active');
         }
     });
+});
+
+// ================================
+// JOB SEARCH AND FILTER
+// ================================
+const jobSearchInput = document.getElementById('job-search');
+const searchBtn = document.getElementById('search-btn');
+const jobList = document.getElementById('job-list');
+const jobItems = document.querySelectorAll('.job-item');
+const filterTags = document.querySelectorAll('.filter-tag');
+const advancedFilterBtn = document.getElementById('advanced-filter-btn');
+const advancedFilters = document.getElementById('advanced-filters');
+const applyFiltersBtn = document.getElementById('apply-filters-btn');
+const minSalaryInput = document.getElementById('min-salary');
+const maxSalaryInput = document.getElementById('max-salary');
+const contractRadios = document.getElementsByName('contract');
+const experienceLevelSelect = document.getElementById('experience-level');
+const locationFilterSelect = document.getElementById('location-filter');
+
+let currentFilter = 'all';
+let minSalary = 0;
+let maxSalary = Infinity;
+let contractType = 'all';
+let experienceLevel = 'all';
+let locationFilter = 'all';
+
+// Search functionality
+function performSearch() {
+    const searchTerm = jobSearchInput.value.toLowerCase().trim();
+    
+    let visibleCount = 0;
+    jobItems.forEach(item => {
+        const title = item.querySelector('h4').textContent.toLowerCase();
+        const company = item.querySelector('.company').textContent.toLowerCase();
+        const description = item.querySelector('.description').textContent.toLowerCase();
+        const location = item.querySelector('.location').textContent.toLowerCase();
+        const salaryText = item.querySelector('.salary').textContent;
+        const salaryMatch = salaryText.match(/R\$ (\d+(?:\.\d+)?) - R\$ (\d+(?:\.\d+)?)/);
+        const itemMinSalary = salaryMatch ? parseFloat(salaryMatch[1].replace('.', '')) : 0;
+        const itemMaxSalary = salaryMatch ? parseFloat(salaryMatch[2].replace('.', '')) : Infinity;
+        
+        const matchesSearch = !searchTerm || 
+            title.includes(searchTerm) || 
+            company.includes(searchTerm) || 
+            description.includes(searchTerm) || 
+            location.includes(searchTerm);
+        
+        const matchesCategory = currentFilter === 'all' || item.dataset.category === currentFilter;
+        
+        const matchesSalary = (itemMinSalary >= minSalary && itemMaxSalary <= maxSalary) || 
+                              (itemMaxSalary >= minSalary && itemMinSalary <= maxSalary);
+        
+        const matchesContract = contractType === 'all' || 
+            (contractType === 'full-time' && description.includes('integral')) ||
+            (contractType === 'part-time' && description.includes('meio')) ||
+            (contractType === 'freelance' && description.includes('freelance'));
+        
+        const matchesExperience = experienceLevel === 'all' || 
+            (experienceLevel === 'junior' && (description.includes('júnior') || description.includes('junior'))) ||
+            (experienceLevel === 'pleno' && description.includes('pleno')) ||
+            (experienceLevel === 'senior' && description.includes('sênior'));
+        
+        const matchesLocation = locationFilter === 'all' || 
+            (locationFilter === 'remoto' && location.includes('remoto')) ||
+            (locationFilter === 'presencial' && !location.includes('remoto') && !location.includes('híbrido')) ||
+            (locationFilter === 'hibrido' && location.includes('híbrido'));
+        
+        if (matchesSearch && matchesCategory && matchesSalary && matchesContract && matchesExperience && matchesLocation) {
+            item.style.display = 'block';
+            visibleCount++;
+        } else {
+            item.style.display = 'none';
+        }
+    });
+    
+    // Update job count
+    const jobCountEl = document.getElementById('job-count');
+    if (jobCountEl) {
+        jobCountEl.textContent = `(${visibleCount})`;
+    }
+}
+
+// Filter functionality
+function applyFilter(filter) {
+    currentFilter = filter;
+    
+    // Update active filter tag
+    filterTags.forEach(tag => {
+        if (tag.dataset.filter === filter) {
+            tag.classList.add('active');
+        } else {
+            tag.classList.remove('active');
+        }
+    });
+    
+    performSearch();
+}
+
+// Apply advanced filters
+function applyAdvancedFilters() {
+    minSalary = parseFloat(minSalaryInput.value) || 0;
+    maxSalary = parseFloat(maxSalaryInput.value) || Infinity;
+    
+    contractRadios.forEach(radio => {
+        if (radio.checked) {
+            contractType = radio.value;
+        }
+    });
+    
+    experienceLevel = experienceLevelSelect.value;
+    locationFilter = locationFilterSelect.value;
+    
+    performSearch();
+}
+
+// Toggle advanced filters
+function toggleAdvancedFilters() {
+    if (advancedFilters.style.display === 'none') {
+        advancedFilters.style.display = 'block';
+    } else {
+        advancedFilters.style.display = 'none';
+    }
+}
+
+// Initialize intelligent filtering on page load
+document.addEventListener('DOMContentLoaded', () => {
+    performSearch(); // Initial display
+    
+    // Event listeners
+    if (jobSearchInput) {
+        jobSearchInput.addEventListener('input', performSearch);
+    }
+
+    if (searchBtn) {
+        searchBtn.addEventListener('click', performSearch);
+    }
+
+    filterTags.forEach(tag => {
+        tag.addEventListener('click', () => {
+            applyFilter(tag.dataset.filter);
+        });
+    });
+
+    if (advancedFilterBtn) {
+        advancedFilterBtn.addEventListener('click', toggleAdvancedFilters);
+    }
+
+    if (applyFiltersBtn) {
+        applyFiltersBtn.addEventListener('click', applyAdvancedFilters);
+    }
 });
 
 // ================================

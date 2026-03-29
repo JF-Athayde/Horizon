@@ -7,10 +7,12 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
+    {% block extra_head %}{% endblock %}
+    
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/header.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/profile.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/footer.css') }}">
     
-    {% block extra_head %}{% endblock %}
 </head>
 <body>
     {% block header %}{% endblock %}

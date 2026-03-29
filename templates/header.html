@@ -1,68 +1,107 @@
 <header class="header">
-
-    <!-- Linha 1 -->
+    <!-- Linha 1 - Navegação Principal -->
     <div class="top-bar">
-        <!-- MENU -->
+        <!-- Menu Toggle Mobile -->
         <div class="menu-toggle" id="menu-toggle">
             <div class="bar"></div>
             <div class="bar"></div>
             <div class="bar"></div>
         </div>
 
-        <!-- LOGO -->
+        <!-- Logo -->
         <div class="logo">
             <img src="{{ url_for('static', filename='assets/logo.png') }}" alt="Horizon">
-            <span>Horizon</span>
+            <div class="logo-text">
+                <span class="logo-main">Horizon</span>
+                <span class="logo-subtitle">Future Leaders</span>
+            </div>
         </div>
 
-        <!-- BUSCA -->
-        <div class="search-box">
-            <input type="text" placeholder="Buscar...">
-        </div>
-
-        <!-- MENU -->
-        <nav class="menu" id="menu">
-            <a href="{{ url_for('home') }}">
-                <img src="{{ url_for('static', filename='icons/home.png') }}">
-                <span>Início</span>
+        <!-- Menu de Navegação -->
+        <nav class="main-nav" id="main-nav">
+            <a href="{{ url_for('home') }}" class="{% if request.endpoint == 'home' %}active{% endif %}">
+                <img src="{{ url_for('static', filename='icons/dashboard.png') }}" alt="Dashboard">
+                <span>Dashboard</span>
             </a>
 
-            <a href="{{ url_for('profile') }}">
-                <img src="{{ url_for('static', filename='icons/profile.png') }}">
-                <span>Perfil</span>
+            <a href="{{ url_for('profile') }}" class="{% if request.endpoint == 'profile' %}active{% endif %}">
+                <img src="{{ url_for('static', filename='icons/profile.png') }}" alt="Profile">
+                <span>Profile</span>
             </a>
 
-            <a href="#portfolio">
-                <img src="{{ url_for('static', filename='icons/resume.png') }}">
-                <span>Portfólio</span>
+            <a href="{{ url_for('connect') }}" class="{% if request.endpoint == 'connect' %}active{% endif %}">
+                <img src="{{ url_for('static', filename='icons/oportunites.png') }}" alt="Connect">
+                <span>Connect</span>
             </a>
 
-            <a href="#oportunidades">
-                <img src="{{ url_for('static', filename='icons/oportunites.png') }}">
-                <span>Oportunidades</span>
+            <a href="{{ url_for('explore') }}" class="{% if request.endpoint == 'explore' %}active{% endif %}">
+                <img src="{{ url_for('static', filename='icons/planet-earth.png') }}" alt="Explore">
+                <span>Explore</span>
             </a>
 
-            <a href="#rede">
-                <img src="{{ url_for('static', filename='icons/net.png') }}">
-                <span>Rede</span>
+            <a href="{{ url_for('world') }}" class="{% if request.endpoint == 'world' %}active{% endif %}">
+                <img src="{{ url_for('static', filename='icons/net.png') }}" alt="World">
+                <span>World</span>
             </a>
 
-            <a href="#config">
-                <img src="{{ url_for('static', filename='icons/settings.png') }}">
-                <span>Configurações</span>
-            </a>
-
-            <a href="#sobre">
-                <img src="{{ url_for('static', filename='icons/about.png') }}">
-                <span>Sobre</span>
+            <a href="{{ url_for('future') }}" class="{% if request.endpoint == 'future' %}active{% endif %}">
+                <img src="{{ url_for('static', filename='icons/star.png') }}" alt="Future">
+                <span>Future</span>
             </a>
         </nav>
 
+        <!-- Perfil do Usuário -->
+        <div class="user-profile">
+            <img src="{{ url_for('static', filename='assets/jf.png') }}" alt="Perfil" class="user-avatar">
+            <div class="user-info">
+                <span class="user-name">Fellipe Athayde</span>
+                <span class="user-status">Online</span>
+            </div>
+        </div>
     </div>
 
-    <!-- Linha 2 -->
+    <!-- Linha 2 - Indicador de Página e Barra de Progresso -->
+    <div class="page-indicator">
+        <div class="page-info">
+            <div class="page-icon">
+                {% if request.endpoint == 'home' %}
+                    <img src="{{ url_for('static', filename='icons/dashboard.png') }}" alt="Dashboard">
+                {% elif request.endpoint == 'profile' %}
+                    <img src="{{ url_for('static', filename='icons/profile.png') }}" alt="Profile">
+                {% elif request.endpoint == 'connect' %}
+                    <img src="{{ url_for('static', filename='icons/oportunites.png') }}" alt="Connect">
+                {% elif request.endpoint == 'explore' %}
+                    <img src="{{ url_for('static', filename='icons/planet-earth.png') }}" alt="Explore">
+                {% elif request.endpoint == 'world' %}
+                    <img src="{{ url_for('static', filename='icons/net.png') }}" alt="World">
+                {% elif request.endpoint == 'future' %}
+                    <img src="{{ url_for('static', filename='icons/star.png') }}" alt="Future">
+                {% endif %}
+            </div>
+            <div class="page-details">
+                <h4 class="page-title">
+                    {% if request.endpoint == 'home' %}Dashboard{% elif request.endpoint == 'profile' %}Perfil{% elif request.endpoint == 'connect' %}Conectar{% elif request.endpoint == 'explore' %}Explorar{% elif request.endpoint == 'world' %}Horizon World{% elif request.endpoint == 'future' %}Horizon Future{% endif %}
+                </h4>
+                <p class="page-description">
+                    {% if request.endpoint == 'home' %}Visão geral do seu progresso e oportunidades{% elif request.endpoint == 'profile' %}Gerencie seu perfil e conquistas{% elif request.endpoint == 'connect' %}Encontre oportunidades personalizadas{% elif request.endpoint == 'explore' %}Descubra oportunidades globais{% elif request.endpoint == 'world' %}Conecte-se com a comunidade{% elif request.endpoint == 'future' %}Contribua para o futuro da plataforma{% endif %}
+                </p>
+            </div>
+        </div>
+        <div class="page-stats">
+            <div class="stat-item">
+                <span class="stat-label">Score Global</span>
+                <span class="stat-value">72%</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-label">Conexões</span>
+                <span class="stat-value">247</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Linha 3 - Barra de Progresso -->
     <div class="progress-container">
         <div class="progress-bar" id="progress-bar"></div>
+        <div class="progress-glow"></div>
     </div>
-
 </header>

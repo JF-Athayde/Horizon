@@ -1,0 +1,748 @@
+/* ===== MIDDLE ===== */
+.dashboard-middle {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.job-results-header {
+    margin-bottom: 16px;
+    background: transparent;
+    border: none;
+    padding: 0;
+    backdrop-filter: none;
+}
+
+.job-results-header h3 {
+    margin: 0 0 8px 0;
+    font-size: 18px;
+    font-weight: 700;
+    color: #202020;
+    display: flex;
+    align-items: center;
+}
+
+.job-results-header h3 img {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+}
+
+.job-results-header p {
+    margin: 0;
+    font-size: 14px;
+    color: #202020;
+    font-weight: 400;
+}
+
+#job-count {
+    font-weight: 600;
+    color: #202020;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+}
+
+.job-search-card {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 24px;
+    max-width: 600px;
+}
+
+.job-search-card h3 {
+    margin-top: 0;
+    font-size: 18px;
+    font-weight: 700;
+    color: #202020;
+    margin-bottom: 16px;
+}
+
+.job-search-card h3 img {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+.search-container {
+    display: flex;
+    margin-bottom: 16px;
+    max-width: 500px;
+}
+
+.search-input {
+    flex: 1;
+    padding: 12px 16px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 6px 0 0 6px;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s ease;
+    background: rgba(255, 255, 255, 0.1);
+    color: #202020;
+}
+
+.search-input:focus {
+    color: #202020;
+}
+
+.search-input::placeholder {
+    color: #202020;
+}
+
+.search-btn {
+    padding: 12px 16px;
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-left: none;
+    border-radius: 0 6px 6px 0;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.search-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.search-btn img {
+    width: 16px;
+    height: 16px;
+}
+
+.filter-tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.filter-tag {
+    padding: 6px 12px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #202020;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.filter-tag.active {
+    background: rgba(255, 255, 255, 0.2);
+    color: #202020;
+}
+
+.filter-tag:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.filter-tag.active:hover {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+.advanced-filter-btn {
+    margin-top: 16px;
+    padding: 10px 16px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 6px;
+    color: #202020;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+}
+
+.advanced-filter-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.advanced-filter-btn img {
+    width: 16px;
+    height: 16px;
+}
+
+.advanced-filters {
+    margin-top: 16px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+}
+
+.filter-group {
+    margin-bottom: 16px;
+}
+
+.filter-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #202020;
+    display: flex;
+    align-items: center;
+}
+
+.filter-group label img {
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+}
+
+.salary-range {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.filter-group select {
+    padding: 10px 12px;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    background: #ffffff;
+    color: #202020;
+    width: 100%;
+    font-size: 14px;
+    transition: border-color 0.2s ease;
+}
+
+.filter-group select:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.contract-type {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.contract-type label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #202020;
+    cursor: pointer;
+}
+
+.contract-type input[type="radio"] {
+    margin: 0;
+}
+
+#experience-level, #location-filter {
+    padding: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #202020;
+    width: 100%;
+}
+
+.apply-filters-btn {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    border-radius: 6px;
+    color: #ffffff;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.apply-filters-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.job-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.job-item {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 16px;
+    transition: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.job-item:hover {
+    box-shadow: none;
+    transform: none;
+}
+
+.job-item:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(135deg, #008607 0%, #005a05 100%);
+}
+
+.job-header {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 12px;
+    gap: 12px;
+}
+
+.job-icon {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.job-icon img {
+    width: 20px;
+    height: 20px;
+}
+
+.job-title-info {
+    flex: 1;
+}
+
+.job-title-info h4 {
+    margin: 0 0 4px 0;
+    font-size: 16px;
+    font-weight: 700;
+    color: #202020;
+}
+
+.job-title-info .company {
+    margin: 0 0 2px 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: #202020;
+}
+
+.job-title-info .location {
+    margin: 0;
+    font-size: 12px;
+    color: #202020;
+}
+
+.job-match {
+    flex-shrink: 0;
+}
+
+.job-match .match {
+    font-size: 12px;
+    font-weight: 700;
+    color: #ffffff;
+    background: linear-gradient(135deg, #ffc107 0%, #fd7e14 100%);
+    padding: 4px 8px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(255, 193, 7, 0.3);
+}
+
+.job-item .description {
+    margin: 0 0 16px 0;
+    font-size: 13px;
+    color: #202020;
+    line-height: 1.5;
+}
+
+.job-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.job-footer .salary {
+    font-size: 14px;
+    font-weight: 600;
+    color: #202020;
+}
+
+.job-footer .apply-btn {
+    padding: 6px 12px;
+    border-radius: 4px;
+    border: none;
+    background: linear-gradient(135deg, #8e28a7 0%, #570e92 100%);
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 11px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.job-footer .apply-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(88, 18, 105, 0.4);
+}
+
+/* ===== WORLD PAGE STYLES ===== */
+.world-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 24px;
+    padding: 20px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.world-title h3 {
+    margin: 0 0 8px 0;
+    font-size: 24px;
+    font-weight: 700;
+    color: #202020;
+    display: flex;
+    align-items: center;
+}
+
+.world-title h3 img {
+    width: 24px;
+    height: 24px;
+    margin-right: 12px;
+}
+
+.world-title p {
+    margin: 0;
+    font-size: 14px;
+    color: #202020;
+    font-weight: 400;
+}
+
+.world-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-end;
+}
+
+.world-stats span {
+    font-size: 12px;
+    color: #202020;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 4px 12px;
+    border-radius: 16px;
+    font-weight: 500;
+}
+
+.world-filters {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    padding: 8px 16px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #202020;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-color: transparent;
+}
+
+.create-post-card {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 24px;
+}
+
+.post-author {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.post-author img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 12px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.post-author span {
+    font-weight: 600;
+    color: #202020;
+}
+
+.create-post-card textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #202020;
+    font-family: inherit;
+    resize: vertical;
+    margin-bottom: 16px;
+}
+
+.create-post-card textarea::placeholder {
+    color: #202020;
+    opacity: 0.7;
+}
+
+.post-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.post-options {
+    display: flex;
+    gap: 8px;
+}
+
+.post-option {
+    display: flex;
+    align-items: center;
+    padding: 6px 12px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #202020;
+    font-size: 11px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.post-option:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.post-option img {
+    width: 14px;
+    height: 14px;
+    margin-right: 6px;
+}
+
+.world-feed {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.feed-item {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.post-card {
+    padding: 20px;
+}
+
+.post-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 16px;
+}
+
+.post-author {
+    display: flex;
+    align-items: center;
+}
+
+.post-author img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 12px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.author-info h4 {
+    margin: 0 0 4px 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: #202020;
+}
+
+.author-role {
+    font-size: 12px;
+    color: #202020;
+    opacity: 0.8;
+}
+
+.post-time {
+    font-size: 11px;
+    color: #202020;
+    opacity: 0.6;
+}
+
+.post-type {
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.post-type.success {
+    background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+    color: white;
+}
+
+.post-type.opportunity {
+    background: linear-gradient(135deg, #FF9800 0%, #f57c00 100%);
+    color: white;
+}
+
+.post-type.project {
+    background: linear-gradient(135deg, #2196F3 0%, #1976D2 100%);
+    color: white;
+}
+
+.post-type.question {
+    background: linear-gradient(135deg, #9C27B0 0%, #7B1FA2 100%);
+    color: white;
+}
+
+.post-content {
+    margin-bottom: 16px;
+}
+
+.post-content p {
+    margin: 0 0 12px 0;
+    line-height: 1.5;
+    color: #202020;
+}
+
+.post-media {
+    margin: 12px 0;
+}
+
+.post-media img {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.post-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.tag {
+    background: rgba(102, 126, 234, 0.1);
+    color: #667eea;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 500;
+}
+
+.project-details {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    padding: 12px;
+    margin: 12px 0;
+}
+
+.detail-item {
+    margin-bottom: 8px;
+}
+
+.detail-item:last-child {
+    margin-bottom: 0;
+}
+
+.detail-item strong {
+    color: #202020;
+    font-size: 12px;
+}
+
+.detail-item {
+    color: #202020;
+    font-size: 12px;
+}
+
+.post-stats {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 16px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.post-stats span {
+    font-size: 12px;
+    color: #202020;
+    opacity: 0.8;
+}
+
+.post-actions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.action-btn {
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #202020;
+    font-size: 11px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.action-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-1px);
+}
+
+.action-btn img {
+    width: 14px;
+    height: 14px;
+    margin-right: 6px;
+}
+
+.interest-btn {
+    background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%) !important;
+    color: white !important;
+    border-color: transparent !important;
+}
+
+.interest-btn:hover {
+    background: linear-gradient(135deg, #45a049 0%, #3d8b40 100%) !important;
+}

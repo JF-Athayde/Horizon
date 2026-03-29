@@ -1,0 +1,179 @@
+{% extends 'model.html' %}
+
+{% block title %}Connect - Horizon{% endblock %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/dashboard-base.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/dashboard-middle.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/dashboard-sidebar.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/dashboard-actions.css') }}">
+{% endblock %}
+
+{% block header %}
+{% include 'header.html' %}
+{% endblock %}
+
+{% block content %}
+<main class="dashboard-page">
+    <aside class="dashboard-sidebar">
+        <div class="card profile-summary">
+            <div class="profile-picture">
+                <img src="{{ url_for('static', filename='assets/jf.png') }}" alt="Foto de Perfil">
+            </div>
+            <h1>Fellipe (JF) Athayde</h1>
+            <h2>Future Global Leader | Tech & Impact</h2>
+            <p>Fortaleza - CE • Brasil</p>
+            <span class="chip">Empreendedorismo Tech | Inovação</span>
+            <div class="global-progress">
+                <span>Score Global: 72%</span>
+                <div class="progress-bar"><span style="width:72%"></span></div>
+            </div>
+        </div>
+
+        <nav class="dashboard-menu">
+            <a href="{{ url_for('home') }}"><img src="{{ url_for('static', filename='icons/dashboard.png') }}" alt="Dashboard"> Dashboard</a>
+            <a href="{{ url_for('profile') }}"><img src="{{ url_for('static', filename='icons/profile.png') }}" alt="Identity"> Identity</a>
+            <a href="{{ url_for('connect') }}"><img src="{{ url_for('static', filename='icons/oportunites.png') }}" alt="Connect"> Connect</a>
+            <a href="{{ url_for('explore') }}"><img src="{{ url_for('static', filename='icons/planet-earth.png') }}" alt="Explore"> Explore</a>
+            <a href="{{ url_for('world') }}"><img src="{{ url_for('static', filename='icons/net.png') }}" alt="World"> World</a>
+            <a href="{{ url_for('future') }}"><img src="{{ url_for('static', filename='icons/star.png') }}" alt="Future"> Future</a>
+            <a href="#"><img src="{{ url_for('static', filename='icons/settings.png') }}" alt="Settings"> Settings</a>
+        </nav>
+    </aside>
+
+    <section class="dashboard-middle">
+        <div class="job-results-header">
+            <h3><img src="{{ url_for('static', filename='icons/oportunites.png') }}" alt="Connect"> Oportunidades Conectadas</h3>
+            <p>Oportunidades que combinam com seu perfil</p>
+        </div>
+
+        <div class="card">
+            <h3>Buscar Oportunidades</h3>
+            <div class="search-container">
+                <input type="text" id="job-search" placeholder="Digite palavras-chave..." class="search-input">
+                <button class="search-btn" id="search-btn">🔍</button>
+            </div>
+        </div>
+
+        <div class="filter-tags">
+            <span class="filter-tag active" data-filter="all">Todas</span>
+            <span class="filter-tag" data-filter="tech">Tecnologia</span>
+            <span class="filter-tag" data-filter="business">Negócios</span>
+            <span class="filter-tag" data-filter="social">Social</span>
+        </div>
+
+        <div class="job-list" id="job-list">
+            <div class="job-item" data-category="tech">
+                <div class="job-header">
+                    <div class="job-icon">
+                        <img src="{{ url_for('static', filename='icons/tools.png') }}" alt="Job">
+                    </div>
+                    <div class="job-title-info">
+                        <h4>Programa Trainee Global</h4>
+                        <p class="company">Shell</p>
+                        <p class="location">Global • Remoto/Híbrido</p>
+                    </div>
+                    <div class="job-match">
+                        <span class="match">91%</span>
+                    </div>
+                </div>
+                <p class="description">Programa de desenvolvimento para jovens líderes em energia sustentável. Foco em inovação e impacto global.</p>
+                <p class="match-reason"><strong>Por que combina:</strong> Seu interesse em empreendedorismo tech e projetos de impacto social.</p>
+                <div class="job-footer">
+                    <span class="salary">Competitivo</span>
+                    <button class="apply-btn">Aplicar</button>
+                </div>
+            </div>
+
+            <div class="job-item" data-category="business">
+                <div class="job-header">
+                    <div class="job-icon">
+                        <img src="https://via.placeholder.com/20x20?text=Job" alt="Business">
+                    </div>
+                    <div class="job-title-info">
+                        <h4>Fellowship de Impacto</h4>
+                        <p class="company">Ashoka</p>
+                        <p class="location">Brasil • Remoto</p>
+                    </div>
+                    <div class="job-match">
+                        <span class="match">86%</span>
+                    </div>
+                </div>
+                <p class="description">Programa para empreendedores sociais. Suporte para projetos de mudança social.</p>
+                <div class="job-footer">
+                    <span class="salary">Bolsa</span>
+                    <button class="apply-btn">Aplicar</button>
+                </div>
+            </div>
+
+            <div class="job-item" data-category="tech">
+                <div class="job-header">
+                    <div class="job-icon">
+                        <img src="https://via.placeholder.com/20x20?text=Job" alt="Tech">
+                    </div>
+                    <div class="job-title-info">
+                        <h4>Pesquisa em IA</h4>
+                        <p class="company">MIT</p>
+                        <p class="location">EUA • Remoto</p>
+                    </div>
+                    <div class="job-match">
+                        <span class="match">88%</span>
+                    </div>
+                </div>
+                <p class="description">Bolsa de pesquisa em inteligência artificial aplicada a problemas globais.</p>
+                <div class="job-footer">
+                    <span class="salary">Bolsa de Pesquisa</span>
+                    <button class="apply-btn">Aplicar</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <aside class="dashboard-actions">
+        <div class="card">
+            <h3><img src="{{ url_for('static', filename='icons/settings.png') }}" alt="Filtros"> Filtros Avançados</h3>
+            <div class="filter-group">
+                <label><img src="{{ url_for('static', filename='icons/planet-earth.png') }}" alt="País"> País</label>
+                <select id="country-filter">
+                    <option value="all">Todos</option>
+                    <option value="br">Brasil</option>
+                    <option value="us">EUA</option>
+                    <option value="global">Global</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label><img src="{{ url_for('static', filename='icons/estatistics.png') }}" alt="Área"> Área</label>
+                <select id="area-filter">
+                    <option value="all">Todas</option>
+                    <option value="tech">Tecnologia</option>
+                    <option value="business">Negócios</option>
+                    <option value="social">Social</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label><img src="{{ url_for('static', filename='icons/tools.png') }}" alt="Tipo"> Tipo</label>
+                <select id="type-filter">
+                    <option value="all">Todos</option>
+                    <option value="job">Emprego</option>
+                    <option value="internship">Estágio</option>
+                    <option value="fellowship">Fellowship</option>
+                </select>
+            </div>
+            <button class="apply-filters-btn" style="width: auto; padding: 10px 20px;">Aplicar Filtros</button>
+        </div>
+
+        <div class="card">
+            <h3><img src="https://via.placeholder.com/20x20?text=S" alt="Salvas"> Oportunidades Salvas</h3>
+            <ul>
+                <li>Programa Trainee Shell</li>
+                <li>Fellowship Ashoka</li>
+            </ul>
+            <button>Ver Todas</button>
+        </div>
+    </aside>
+</main>
+{% endblock %}
+
+{% block footer %}
+{% include 'footer.html' %}
+{% endblock %}

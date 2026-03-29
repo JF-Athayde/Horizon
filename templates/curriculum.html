@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+{% extends 'model.html' %}
+
+{% block title %}Currículo - Horizon{% endblock %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/dashboard-base.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/dashboard-middle.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/dashboard-sidebar.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/dashboard-actions.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/footer.css') }}">
+{% endblock %}
+
+{% block header %}
+{% include 'header.html' %}
+{% endblock %}
+
+{% block content %}
+<div class="dashboard-page">
+    <!-- Sidebar -->
+    <div class="dashboard-sidebar">
+        <div class="card profile-summary">
+            <div class="profile-picture">
+                <img src="{{ url_for('static', filename='assets/jf.png') }}" alt="Foto do Perfil">
+            </div>
+            <h1>João Fellipe</h1>
+            <h2>Desenvolvedor Full Stack</h2>
+            <p>São Paulo, SP</p>
+            <div class="chip">Disponível para oportunidades</div>
+            <div class="global-progress">
+                <span>Progresso Geral: 85%</span>
+                <div class="progress-bar">
+                    <span style="width: 85%;"></span>
+                </div>
+            </div>
+        </div>
+        <div class="card dashboard-menu">
+            <a href="/"><img src="https://via.placeholder.com/20x20?text=Home" alt="Home"> Início</a>
+            <a href="/profile"><img src="https://via.placeholder.com/20x20?text=Profile" alt="Perfil"> Perfil</a>
+            <a href="/curriculum"><img src="https://via.placeholder.com/20x20?text=CV" alt="CV"> Currículo</a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="dashboard-middle">
+        <div class="card">
+            <h2>Resumo Profissional</h2>
+            <p>Desenvolvedor Full Stack com experiência em Python, Flask, HTML, CSS e JavaScript. Apaixonado por criar aplicações web eficientes e escaláveis. Busco oportunidades para contribuir com projetos inovadores e crescer profissionalmente em um ambiente dinâmico.</p>
+        </div>
+
+        <div class="card">
+            <h3>Experiência Profissional</h3>
+            <div class="job-list">
+                <div class="job-item">
+                    <div class="job-header">
+                        <div class="job-icon">
+                            <img src="https://via.placeholder.com/20x20?text=Job" alt="Job">
+                        </div>
+                        <div class="job-title-info">
+                            <h4>Desenvolvedor Full Stack</h4>
+                            <p class="company">Tech Solutions Ltda</p>
+                            <p class="location">São Paulo, SP</p>
+                        </div>
+                        <div class="job-match">
+                            <span class="match">2022 - Presente</span>
+                        </div>
+                    </div>
+                    <p class="description">Desenvolvimento de aplicações web usando Flask, integração com bancos de dados PostgreSQL, implementação de APIs RESTful e otimização de performance. Liderança de equipe em projetos de e-commerce.</p>
+                </div>
+                <div class="job-item">
+                    <div class="job-header">
+                        <div class="job-icon">
+                            <img src="https://via.placeholder.com/20x20?text=Job" alt="Job">
+                        </div>
+                        <div class="job-title-info">
+                            <h4>Desenvolvedor Front-End</h4>
+                            <p class="company">WebDev Agency</p>
+                            <p class="location">São Paulo, SP</p>
+                        </div>
+                        <div class="job-match">
+                            <span class="match">2020 - 2022</span>
+                        </div>
+                    </div>
+                    <p class="description">Criação de interfaces responsivas com HTML, CSS e JavaScript. Colaboração com designers para implementar protótipos e garantir experiência do usuário excepcional.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>Educação</h3>
+            <div class="job-list">
+                <div class="job-item">
+                    <div class="job-header">
+                        <div class="job-icon">
+                            <img src="https://via.placeholder.com/20x20?text=Edu" alt="Education">
+                        </div>
+                        <div class="job-title-info">
+                            <h4>Bacharelado em Ciência da Computação</h4>
+                            <p class="company">Universidade de São Paulo (USP)</p>
+                            <p class="location">São Paulo, SP</p>
+                        </div>
+                        <div class="job-match">
+                            <span class="match">2016 - 2020</span>
+                        </div>
+                    </div>
+                    <p class="description">Bacharelado em Ciência da Computação. Participação em projetos de pesquisa sobre inteligência artificial e desenvolvimento de software. Menção honrosa em TCC sobre aplicações web.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>Habilidades</h3>
+            <ul>
+                <li>Python (Flask, Django)</li>
+                <li>JavaScript (React, Node.js)</li>
+                <li>HTML5 & CSS3</li>
+                <li>Bancos de Dados (PostgreSQL, MongoDB)</li>
+                <li>Git & Versionamento</li>
+                <li>APIs RESTful</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>Idiomas</h3>
+            <ul>
+                <li>Português - Nativo</li>
+                <li>Inglês - Avançado (C1)</li>
+                <li>Espanhol - Intermediário</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Actions Sidebar -->
+    <div class="dashboard-actions">
+        <div class="card">
+            <h3><img src="https://via.placeholder.com/20x20?text=DL" alt="Download"> Baixar Currículo</h3>
+            <button>Download PDF</button>
+        </div>
+        <div class="card">
+            <h3><img src="https://via.placeholder.com/20x20?text=Share" alt="Share"> Compartilhar</h3>
+            <button>Compartilhar Link</button>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block footer %}
+{% include 'footer.html' %}
+{% endblock %}
