@@ -1,0 +1,68 @@
+<header class="header">
+
+    <!-- Linha 1 -->
+    <div class="top-bar">
+        <!-- MENU -->
+        <div class="menu-toggle" id="menu-toggle">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+
+        <!-- LOGO -->
+        <div class="logo">
+            <img src="{{ url_for('static', filename='assets/logo.png') }}" alt="Horizon">
+            <span>Horizon</span>
+        </div>
+
+        <!-- BUSCA -->
+        <div class="search-box">
+            <input type="text" placeholder="Buscar...">
+        </div>
+
+        <!-- MENU -->
+        <nav class="menu" id="menu">
+            <a href="{{ url_for('home') }}">
+                <img src="{{ url_for('static', filename='icons/home.png') }}">
+                <span>Início</span>
+            </a>
+
+            <a href="{{ url_for('profile') }}">
+                <img src="{{ url_for('static', filename='icons/profile.png') }}">
+                <span>Perfil</span>
+            </a>
+
+            <a href="#portfolio">
+                <img src="{{ url_for('static', filename='icons/resume.png') }}">
+                <span>Portfólio</span>
+            </a>
+
+            <a href="#oportunidades">
+                <img src="{{ url_for('static', filename='icons/oportunites.png') }}">
+                <span>Oportunidades</span>
+            </a>
+
+            <a href="#rede">
+                <img src="{{ url_for('static', filename='icons/net.png') }}">
+                <span>Rede</span>
+            </a>
+
+            <a href="#config">
+                <img src="{{ url_for('static', filename='icons/settings.png') }}">
+                <span>Configurações</span>
+            </a>
+
+            <a href="#sobre">
+                <img src="{{ url_for('static', filename='icons/about.png') }}">
+                <span>Sobre</span>
+            </a>
+        </nav>
+
+    </div>
+
+    <!-- Linha 2 -->
+    <div class="progress-container">
+        <div class="progress-bar" id="progress-bar"></div>
+    </div>
+
+</header>

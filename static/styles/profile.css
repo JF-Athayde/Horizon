@@ -462,3 +462,97 @@ button:active {
         order: 3;
     }
 }
+
+/* ===== TABS FOR APPLYNOW ===== */
+
+.tabs {
+    margin-top: 20px;
+}
+
+.tab-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.tab-btn {
+    padding: 8px 16px;
+    border: 1px solid #e5e7eb;
+    background: #f9fafb;
+    color: #6b7280;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.tab-btn:hover {
+    background: #e5e7eb;
+    color: #374151;
+}
+
+.tab-btn.active {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #ffffff;
+    border-color: #667eea;
+}
+
+.tab-content {
+    border-top: 1px solid #e5e7eb;
+    padding-top: 20px;
+}
+
+.tab-pane {
+    display: none;
+}
+
+.tab-pane.active {
+    display: block;
+}
+
+.tab-pane h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #202020;
+    margin-bottom: 12px;
+}
+
+.tab-pane p {
+    margin: 8px 0;
+    font-size: 13px;
+    color: #4b5563;
+}
+
+.tab-pane ul {
+    padding-left: 20px;
+    font-size: 13px;
+    color: #4b5563;
+    margin: 8px 0;
+}
+
+.tab-pane li {
+    padding: 4px 0;
+}
+
+.resumo {
+    margin-top: 24px;
+    padding: 16px;
+    background: #f9fafb;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+}
+
+.resumo h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #202020;
+    margin-bottom: 12px;
+}
+
+.resumo p {
+    margin: 8px 0;
+    font-size: 13px;
+    color: #4b5563;
+}

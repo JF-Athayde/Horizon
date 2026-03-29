@@ -1,0 +1,167 @@
+{% extends "model.html" %}
+
+{% block title %}Perfil - Horizon{% endblock %}
+
+{% block header %}
+{% include "header.html" %}
+{% endblock %}
+
+{% block content %}
+<main class="profile-page">
+    <aside class="profile-sidebar">
+        <div class="card profile-summary">
+            <div class="profile-picture">
+                <img src="{{ url_for('static', filename='assets/jf.png') }}" alt="Foto de Perfil">
+            </div>
+            <h1>Fellipe (JF) Athayde</h1>
+            <h2>Full-Stack Developer, ML Researcher</h2>
+            <p>Fortaleza - CE • Brasil</p>
+            <span class="chip">Future Global Leader | Tech & Impact</span>
+        </div>
+
+        <div class="card quick-stats">
+            <h3>Prontidão para Emprego</h3>
+            <p class="large-score" id="job-readiness">72%</p>
+            <ul>
+                <li>Match atual: 88% com oportunidades de desenvolvimento</li>
+                <li>Soft skills: Comunicação, Liderança, Colaboração</li>
+                <li>Hard skills: Python, React, SQL, IA</li>
+            </ul>
+        </div>
+
+        <div class="card attention">
+            <h3>ROTA DE AÇÃO</h3>
+            <ol>
+                <li>Atualizar vídeo de apresentação</li>
+                <li>Publicar 1 novo case no portfólio</li>
+                <li>Marcar 3 vagas e candidatar em 24h</li>
+            </ol>
+            <button id="apply-jobs">Candidatar agora</button>
+        </div>
+    </aside>
+
+    <section class="profile-content">
+        <div class="card section-identity">
+            <h2>Identidade Global</h2>
+            <p>Objetivo: Construir carreira global em product & AI, focando impacto social e inovação com escala.</p>
+            <div class="tags">
+                <span>Empreendedorismo Tech</span>
+                <span>Educação Internacional</span>
+                <span>Impacto Social</span>
+            </div>
+        </div>
+
+        <div class="card section-video">
+            <div class="section-header">
+                <h2>Vídeo de Apresentação</h2>
+                <small>60-90s: Quem sou | O que busco | Impacto futuro</small>
+            </div>
+            <button id="record-profile-video">Gravar vídeo</button>
+            <p class="hint">Use seu smartphone / webcam e compartilhe o link para recrutadores.</p>
+            <div class="video-state" id="profile-video-state">Nenhum vídeo registrado.</div>
+        </div>
+
+        <div class="card section-academic">
+            <h2>Perfil Acadêmico</h2>
+            <ul>
+                <li>🎓 Bacharel em Engenharia de Computação (Universidade Federal do Ceará) – Conclusão 2025</li>
+                <li>📚 Cursos: Data Science, MLOps, Product Management (Coursera + Udemy)</li>
+                <li>🌍 Idiomas: Português (Nativo), Inglês (Avançado - TOEFL 100), Espanhol (Intermediário)</li>
+                <li>🔬 Pesquisa: Coautor em artigo sobre fairness em modelos preditivos (SBC 2024)</li>
+            </ul>
+            <p class="advice">IA sugere: adicionar certificado de AWS/GCP para aumentar score de vaga em 10 pontos.</p>
+        </div>
+
+        <div class="card section-professional">
+            <h2>Perfil Profissional</h2>
+            <ul>
+                <li>💼 Estágio em SaaS Analytics (abril 2023 - presente): planejamento, arquitetura e implementação de ETL</li>
+                <li>🛠️ Projeto: plataforma de matchmaking acadêmico com ML (redução de 30% em tempo de seleção)</li>
+                <li>⭐ Soft skills: gestão ágil, trabalho remoto multinacional, orientação a resultados</li>
+            </ul>
+
+            <div class="skill-grid">
+                <div>
+                    <h4>Python</h4>
+                    <div class="skill-bar"><span style="width: 92%"></span></div>
+                </div>
+                <div>
+                    <h4>React</h4>
+                    <div class="skill-bar"><span style="width: 85%"></span></div>
+                </div>
+                <div>
+                    <h4>SQL</h4>
+                    <div class="skill-bar"><span style="width: 88%"></span></div>
+                </div>
+                <div>
+                    <h4>Machine Learning</h4>
+                    <div class="skill-bar"><span style="width: 79%"></span></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card section-portfolio">
+            <h2>Portfólio Vivo</h2>
+            <div class="project">
+                <h4>EduTech Impact</h4>
+                <p>Problema: baixa retenção de estudantes em cursos remotos.</p>
+                <p>Solução: engine adaptativa e notificações comportamentais; +40% retenção.</p>
+                <p>Impacto: 2.300 alunos engajados, 150+ avaliações 5 estrelas.</p>
+                <p>Score de Impacto: <strong>87</strong></p>
+                <a href="https://github.com/jfathayde/edutech-impact" target="_blank">Ver repositório</a>
+            </div>
+            <div class="project">
+                <h4>ApplyNow - Protótipo PEI</h4>
+                <p>Problema: perfil estático e processos de matching imprecisos.</p>
+                <p>Solução: dashboard evolutivo + IA de oportunidade.</p>
+                <p>Impacto: produto validado em hackathon M60. <strong>3 prêmios</strong>.</p>
+                <a href="#">Ver projeto</a>
+            </div>
+            <button id="add-portfolio-item">Adicionar novo projeto</button>
+        </div>
+
+        <div class="card section-ods">
+            <h2>Impacto & ODS</h2>
+            <p>Relate iniciativas aos Objetivos de Desenvolvimento Sustentável:</p>
+            <ul>
+                <li>ODS 4: Qualidade da Educação - plataforma adaptativa para alunos remotos</li>
+                <li>ODS 9: Indústria, Inovação e Infraestrutura - soluções de dados para startups</li>
+                <li>ODS 10: Redução das Desigualdades - bolsas de estudo + mentorias gratuitas</li>
+            </ul>
+        </div>
+
+        <div class="card section-global-score">
+            <h2>Score Global de Prontidão</h2>
+            <div class="score-display" id="global-score">72%</div>
+            <div class="mini-progress"><span style="width:72%"></span></div>
+            <p>Baseado em habilidades, experiências, vídeo e potencial de impacto.</p>
+        </div>
+    </section>
+
+    <aside class="profile-actions">
+        <div class="card">
+            <h3>Oportunidades recomendadas</h3>
+            <ul>
+                <li>Programa Trainee Global (Shell) - Match 91%</li>
+                <li>Bolsa Pesquisa IA (MIT) - Match 88%</li>
+                <li>Fellowship de Impacto (Ashoka) - Match 86%</li>
+            </ul>
+            <button id="apply-recommended">Aplicar nas oportunidades</button>
+        </div>
+
+        <div class="card">
+            <h3>Ações Imediatas</h3>
+            <ol>
+                <li>Atualizar perfil LinkedIn + CV</li>
+                <li>Publicar vídeo de apresentação</li>
+                <li>Concluir missão 'ODS no Portfólio'</li>
+            </ol>
+            <button id="mark-ODS">Marcar missão concluída</button>
+        </div>
+    </aside>
+</main>
+{% endblock %}
+
+{% block footer %}
+{% include "footer.html" %}
+{% endblock %}

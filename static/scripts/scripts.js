@@ -204,3 +204,32 @@ if (markODSMissionBtn) {
         }
     });
 }
+
+// ================================
+// TABS FOR APPLYNOW
+// ================================
+const tabButtons = document.querySelectorAll('.tab-btn');
+const tabPanes = document.querySelectorAll('.tab-pane');
+
+tabButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+        // Remove active from all buttons and panes
+        tabButtons.forEach(b => b.classList.remove('active'));
+        tabPanes.forEach(p => p.classList.remove('active'));
+
+        // Add active to clicked button
+        btn.classList.add('active');
+
+        // Show corresponding pane
+        const tabId = btn.dataset.tab;
+        const pane = document.getElementById(tabId);
+        if (pane) {
+            pane.classList.add('active');
+        }
+    });
+});
+
+// ================================
+// DEBUG (opcional)
+// ================================
+// console.log("Script carregado com sucesso 🚀");
