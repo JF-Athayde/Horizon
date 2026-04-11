@@ -18,39 +18,39 @@
     <aside class="dashboard-sidebar">
         <div class="card profile-summary">
             <div class="profile-picture">
-                <img src="{{ url_for('static', filename='assets/jf.png') }}" alt="Foto de Perfil">
+                <img src="{{ url_for('static', filename=current_user.foto_perfil) }}" alt="Foto de Perfil">
             </div>
-            <h1>Fellipe (JF) Athayde</h1>
-            <h2>Future Global Leader | Tech & Impact</h2>
-            <p>Fortaleza - CE • Brasil</p>
-            <span class="chip">Empreendedorismo Tech | Inovação</span>
+            <h1>{{ current_user.nome_completo or current_user.username }}</h1>
+            <h2>{{ current_user.cargo or 'Membro da Plataforma' }} | Tech & Impact</h2>
+            <p>{{ current_user.localizacao }}</p>
+            <span class="chip">{{ current_user.get_interesses_list()[0] if current_user.get_interesses_list() else 'Inovação' }}</span>
             <div class="global-progress">
-                <span>Score Global: 72%</span>
-                <div class="progress-bar"><span style="width:72%"></span></div>
+                <span>Score Global: {{ current_user.score_global or 0 }}%</span>
+                <div class="progress-bar"><span style="width:{{ current_user.score_global or 0 }}%"></span></div>
             </div>
         </div>
 
         <nav class="dashboard-menu">
-            <a href="{{ url_for('home') }}"><img src="{{ url_for('static', filename='icons/dashboard.png') }}" alt="Dashboard"> Dashboard</a>
-            <a href="{{ url_for('profile') }}"><img src="{{ url_for('static', filename='icons/profile.png') }}" alt="Identity"> Identity</a>
-            <a href="{{ url_for('connect') }}"><img src="{{ url_for('static', filename='icons/oportunites.png') }}" alt="Connect"> Connect</a>
-            <a href="{{ url_for('explore') }}"><img src="{{ url_for('static', filename='icons/planet-earth.png') }}" alt="Explore"> Explore</a>
-            <a href="{{ url_for('world') }}"><img src="{{ url_for('static', filename='icons/net.png') }}" alt="World"> World</a>
-            <a href="{{ url_for('future') }}"><img src="{{ url_for('static', filename='icons/star.png') }}" alt="Future"> Future</a>
+            <a href="{{ url_for('home') }}"><img src="{{ url_for('static', filename='icons/dashboard.png') }}" alt="Dashboard" class="icon"> Dashboard</a>
+            <a href="{{ url_for('profile') }}"><img src="{{ url_for('static', filename='icons/profile.png') }}" alt="Identity" class="icon"> Identity</a>
+            <a href="{{ url_for('connect') }}"><img src="{{ url_for('static', filename='icons/oportunites.png') }}" alt="Connect" class="icon"> Connect</a>
+            <a href="{{ url_for('explore') }}"><img src="{{ url_for('static', filename='icons/planet-earth.png') }}" alt="Explore" class="icon"> Explore</a>
+            <a href="{{ url_for('world') }}"><img src="{{ url_for('static', filename='icons/net.png') }}" alt="World" class="icon"> World</a>
+            <a href="{{ url_for('future') }}"><img src="{{ url_for('static', filename='icons/star.png') }}" alt="Future" class="icon"> Future</a>
         </nav>
     </aside>
 
     <section class="dashboard-middle">
         <div class="job-results-header">
-            <h3><img src="{{ url_for('static', filename='icons/oportunites.png') }}" alt="Vagas"> Vagas Recomendadas</h3>
+            <h3><img src="{{ url_for('static', filename='icons/oportunites.png') }}" alt="Vagas" class="icon"> Vagas Recomendadas</h3>
             <p>Baseadas no seu perfil e interesses</p>
         </div>
 
         <div class="job-list" id="job-list">
-            <div class="job-item" data-category="tech">
+            <div class="job-item" data-category="tech" data-title="Desenvolvedor Full Stack" data-company="TechCorp Inc." data-match="95">
                 <div class="job-header">
                     <div class="job-icon">
-                        <img src="{{ url_for('static', filename='icons/tools.png') }}" alt="Tech">
+                        <img src="{{ url_for('static', filename='icons/tools.png') }}" alt="Tech" class="icon">
                     </div>
                     <div class="job-title-info">
                         <h4>Desenvolvedor Full Stack</h4>
@@ -64,14 +64,14 @@
                 <p class="description">Buscamos desenvolvedor pleno em React e Node.js para projetos inovadores. Tempo integral.</p>
                 <div class="job-footer">
                     <span class="salary">R$ 8.000 - R$ 12.000</span>
-                    <button class="apply-btn">Candidatar-se</button>
+                    <button class="apply-btn" onclick="applyJob(this)">Candidatar-se</button>
                 </div>
             </div>
 
-            <div class="job-item" data-category="business">
+            <div class="job-item" data-category="business" data-title="Analista de Dados" data-company="Data Insights Ltda" data-match="88">
                 <div class="job-header">
                     <div class="job-icon">
-                        <img src="{{ url_for('static', filename='icons/estatistics.png') }}" alt="Business">
+                        <img src="{{ url_for('static', filename='icons/estatistics.png') }}" alt="Business" class="icon">
                     </div>
                     <div class="job-title-info">
                         <h4>Analista de Dados</h4>
@@ -85,14 +85,14 @@
                 <p class="description">Análise de dados empresariais usando Python e SQL. Experiência com BI obrigatória. Tempo integral, nível pleno.</p>
                 <div class="job-footer">
                     <span class="salary">R$ 6.000 - R$ 9.000</span>
-                    <button class="apply-btn">Candidatar-se</button>
+                    <button class="apply-btn" onclick="applyJob(this)">Candidatar-se</button>
                 </div>
             </div>
 
-            <div class="job-item" data-category="design">
+            <div class="job-item" data-category="design" data-title="UX/UI Designer" data-company="Creative Studio" data-match="92">
                 <div class="job-header">
                     <div class="job-icon">
-                        <img src="{{ url_for('static', filename='icons/star.png') }}" alt="Design">
+                        <img src="{{ url_for('static', filename='icons/star.png') }}" alt="Design" class="icon">
                     </div>
                     <div class="job-title-info">
                         <h4>UX/UI Designer</h4>
@@ -106,7 +106,7 @@
                 <p class="description">Designer criativo para interfaces digitais. Conhecimento em Figma e Adobe XD. Freelance, nível júnior.</p>
                 <div class="job-footer">
                     <span class="salary">R$ 5.500 - R$ 8.000</span>
-                    <button class="apply-btn">Candidatar-se</button>
+                    <button class="apply-btn" onclick="applyJob(this)">Candidatar-se</button>
                 </div>
             </div>
         </div>
@@ -114,30 +114,30 @@
 
     <aside class="dashboard-actions">
         <div class="card">
-            <h3><img src="{{ url_for('static', filename='icons/estatistics.png') }}" alt="Score"> Score Global de Prontidão</h3>
+            <h3><img src="{{ url_for('static', filename='icons/estatistics.png') }}" alt="Score" class="icon"> Score Global de Prontidão</h3>
             <div class="score-display" id="global-score">72%</div>
             <div class="mini-progress"><span style="width:72%"></span></div>
             <p>Baseado em seu perfil único, vídeo autêntico e impacto comprovado.</p>
         </div>
 
         <div class="card">
-            <h3><img src="{{ url_for('static', filename='icons/bolt.png') }}" alt="Próximos Passos"> Próximos Passos para o Sucesso</h3>
+            <h3><img src="{{ url_for('static', filename='icons/bolt.png') }}" alt="Próximos Passos" class="icon"> Próximos Passos para o Sucesso</h3>
             <ol>
                 <li>Grave seu vídeo de apresentação</li>
                 <li>Adicione projetos no portfólio</li>
                 <li>Atualize seus idiomas e certificados</li>
             </ol>
-            <button id="start-actions">Começar Minha Jornada</button>
+            <button id="start-actions" class="btn">Começar Minha Jornada</button>
         </div>
 
         <div class="card">
-            <h3><img src="{{ url_for('static', filename='icons/star.png') }}" alt="Oportunidades"> Oportunidades Prioritárias</h3>
+            <h3><img src="{{ url_for('static', filename='icons/star.png') }}" alt="Oportunidades" class="icon"> Oportunidades Prioritárias</h3>
             <ul>
                 <li>Programa Trainee Global (Shell) - Match 91%</li>
                 <li>Bolsa Pesquisa IA (MIT) - Match 88%</li>
                 <li>Fellowship de Impacto (Ashoka) - Match 86%</li>
             </ul>
-            <button id="view-all-opportunities">Ver Todas</button>
+            <button id="view-all-opportunities" class="btn">Ver Todas</button>
         </div>
     </aside>
 </main>
@@ -145,4 +145,193 @@
 
 {% block footer %}
 {% include "footer.html" %}
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+// Função para candidatar a uma vaga
+function applyJob(button) {
+    const jobItem = button.closest('.job-item');
+    const jobTitle = jobItem.dataset.title;
+    const company = jobItem.dataset.company;
+    const matchScore = jobItem.dataset.match;
+    
+    // Desabilitar botão enquanto processa
+    button.disabled = true;
+    const originalText = button.textContent;
+    button.textContent = 'Processando...';
+    
+    fetch('{{ url_for("apply_job") }}', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': document.querySelector('[name=csrf_token]')?.value || ''
+        },
+        body: JSON.stringify({
+            job_title: jobTitle,
+            company: company,
+            match_score: matchScore
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        // Mostrar mensagem de sucesso/erro
+        showNotification(data.message, data.success ? 'success' : 'error');
+        
+        if (data.success) {
+            // Mudar texto e estilo do botão
+            button.textContent = '✅ Candidatado';
+            button.style.background = '#10b981';
+            button.disabled = true;
+            
+            // Recarregar candidaturas se na página de perfil
+            if (window.location.pathname.includes('/profile')) {
+                loadApplications();
+            }
+        } else {
+            button.textContent = originalText;
+            button.disabled = false;
+        }
+    })
+    .catch(error => {
+        console.error('Erro:', error);
+        showNotification('Erro ao candidatar. Tente novamente.', 'error');
+        button.textContent = originalText;
+        button.disabled = false;
+    });
+}
+
+// Função para mostrar notificação
+function showNotification(message, type = 'info') {
+    const notification = document.createElement('div');
+    notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        padding: 16px 24px;
+        border-radius: 8px;
+        color: white;
+        font-weight: 600;
+        z-index: 10000;
+        animation: slideIn 0.3s ease;
+        background: ${type === 'success' ? '#10b981' : type === 'error' ? '#ef4444' : '#667eea'};
+    `;
+    notification.textContent = message;
+    document.body.appendChild(notification);
+    
+    setTimeout(() => {
+        notification.style.animation = 'slideOut 0.3s ease';
+        setTimeout(() => notification.remove(), 300);
+    }, 3000);
+}
+
+// Função para carregar candidaturas (usada no perfil)
+function loadApplications() {
+    fetch('{{ url_for("get_applications") }}')
+    .then(response => response.json())
+    .then(data => {
+        const container = document.getElementById('applications-container');
+        if (container) {
+            renderApplications(data);
+        }
+    })
+    .catch(error => console.error('Erro ao carregar candidaturas:', error));
+}
+
+// Função para renderizar candidaturas
+function renderApplications(applications) {
+    const container = document.getElementById('applications-container');
+    
+    if (!applications || applications.length === 0) {
+        container.innerHTML = '<p style="text-align: center; color: #9CA3AF;">Nenhuma candidatura realizada ainda.</p>';
+        return;
+    }
+    
+    let html = '<div style="display: grid; gap: 12px;">';
+    
+    applications.forEach(app => {
+        const statusColor = {
+            'candidatado': '#667eea',
+            'entrevista': '#f59e0b',
+            'aceito': '#10b981',
+            'rejeitado': '#ef4444'
+        }[app.status] || '#667eea';
+        
+        html += `
+            <div style="padding: 12px; border: 1px solid #e5e7eb; border-radius: 8px; display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <h5 style="margin: 0 0 4px 0;">${app.job_title}</h5>
+                    <p style="margin: 0 0 4px 0; font-size: 13px; color: #6b7280;">${app.company}</p>
+                    <p style="margin: 0; font-size: 12px; color: #9CA3AF;">${app.created_at}</p>
+                </div>
+                <div style="text-align: right;">
+                    <span style="background: ${statusColor}; color: white; padding: 4px 12px; border-radius: 4px; font-size: 12px; font-weight: 600;">${app.status}</span>
+                    <p style="margin: 8px 0 0 0; font-size: 12px; color: #667eea; font-weight: 600;">Match: ${app.match_score}%</p>
+                    <button onclick="withdrawApplication(${app.id})" style="margin-top: 8px; background: #ef4444; color: white; border: none; padding: 4px 8px; border-radius: 4px; font-size: 11px; cursor: pointer;">Cancelar</button>
+                </div>
+            </div>
+        `;
+    });
+    
+    html += '</div>';
+    container.innerHTML = html;
+}
+
+// Função para cancelar candidatura
+function withdrawApplication(appId) {
+    if (!confirm('Tem certeza que deseja cancelar esta candidatura?')) {
+        return;
+    }
+    
+    fetch(`{{ url_for('withdraw_application', app_id=0) }}`.replace('0', appId), {
+        method: 'POST',
+        headers: {
+            'X-CSRFToken': document.querySelector('[name=csrf_token]')?.value || ''
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        showNotification(data.message, data.success ? 'success' : 'error');
+        if (data.success) {
+            loadApplications();
+        }
+    })
+    .catch(error => {
+        console.error('Erro:', error);
+        showNotification('Erro ao cancelar candidatura.', 'error');
+    });
+}
+
+// Carregar candidaturas ao enten na página de perfil
+if (window.location.pathname.includes('/profile')) {
+    loadApplications();
+}
+
+// Adicionar estilos para animação
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes slideIn {
+        from {
+            transform: translateX(400px);
+            opacity: 0;
+        }
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+    
+    @keyframes slideOut {
+        from {
+            transform: translateX(0);
+            opacity: 1;
+        }
+        to {
+            transform: translateX(400px);
+            opacity: 0;
+        }
+    }
+`;
+document.head.appendChild(style);
+</script>
 {% endblock %}

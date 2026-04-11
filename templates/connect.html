@@ -31,19 +31,19 @@
         </div>
 
         <nav class="dashboard-menu">
-            <a href="{{ url_for('home') }}"><img src="{{ url_for('static', filename='icons/dashboard.png') }}" alt="Dashboard"> Dashboard</a>
-            <a href="{{ url_for('profile') }}"><img src="{{ url_for('static', filename='icons/profile.png') }}" alt="Identity"> Identity</a>
-            <a href="{{ url_for('connect') }}"><img src="{{ url_for('static', filename='icons/oportunites.png') }}" alt="Connect"> Connect</a>
-            <a href="{{ url_for('explore') }}"><img src="{{ url_for('static', filename='icons/planet-earth.png') }}" alt="Explore"> Explore</a>
-            <a href="{{ url_for('world') }}"><img src="{{ url_for('static', filename='icons/net.png') }}" alt="World"> World</a>
-            <a href="{{ url_for('future') }}"><img src="{{ url_for('static', filename='icons/star.png') }}" alt="Future"> Future</a>
-            <a href="#"><img src="{{ url_for('static', filename='icons/settings.png') }}" alt="Settings"> Settings</a>
+            <a href="{{ url_for('home') }}"><img src="{{ url_for('static', filename='icons/dashboard.png') }}" alt="Dashboard" class="icon"> Dashboard</a>
+            <a href="{{ url_for('profile') }}"><img src="{{ url_for('static', filename='icons/profile.png') }}" alt="Identity" class="icon"> Identity</a>
+            <a href="{{ url_for('connect') }}"><img src="{{ url_for('static', filename='icons/oportunites.png') }}" alt="Connect" class="icon"> Connect</a>
+            <a href="{{ url_for('explore') }}"><img src="{{ url_for('static', filename='icons/planet-earth.png') }}" alt="Explore" class="icon"> Explore</a>
+            <a href="{{ url_for('world') }}"><img src="{{ url_for('static', filename='icons/net.png') }}" alt="World" class="icon"> World</a>
+            <a href="{{ url_for('future') }}"><img src="{{ url_for('static', filename='icons/star.png') }}" alt="Future" class="icon"> Future</a>
+            <a href="#"><img src="{{ url_for('static', filename='icons/settings.png') }}" alt="Settings" class="icon"> Settings</a>
         </nav>
     </aside>
 
     <section class="dashboard-middle">
         <div class="job-results-header">
-            <h3><img src="{{ url_for('static', filename='icons/oportunites.png') }}" alt="Connect"> Oportunidades Conectadas</h3>
+            <h3><img src="{{ url_for('static', filename='icons/oportunites.png') }}" alt="Connect" class="icon"> Oportunidades Conectadas</h3>
             <p>Oportunidades que combinam com seu perfil</p>
         </div>
 
@@ -66,7 +66,7 @@
             <div class="job-item" data-category="tech">
                 <div class="job-header">
                     <div class="job-icon">
-                        <img src="{{ url_for('static', filename='icons/tools.png') }}" alt="Job">
+                        <img src="{{ url_for('static', filename='icons/tools.png') }}" alt="Job" class="icon">
                     </div>
                     <div class="job-title-info">
                         <h4>Programa Trainee Global</h4>
@@ -131,9 +131,9 @@
 
     <aside class="dashboard-actions">
         <div class="card">
-            <h3><img src="{{ url_for('static', filename='icons/settings.png') }}" alt="Filtros"> Filtros Avançados</h3>
+            <h3><img src="{{ url_for('static', filename='icons/settings.png') }}" alt="Filtros" class="icon"> Filtros Avançados</h3>
             <div class="filter-group">
-                <label><img src="{{ url_for('static', filename='icons/planet-earth.png') }}" alt="País"> País</label>
+                <label><img src="{{ url_for('static', filename='icons/planet-earth.png') }}" alt="País" class="icon"> País</label>
                 <select id="country-filter">
                     <option value="all">Todos</option>
                     <option value="br">Brasil</option>
@@ -142,7 +142,7 @@
                 </select>
             </div>
             <div class="filter-group">
-                <label><img src="{{ url_for('static', filename='icons/estatistics.png') }}" alt="Área"> Área</label>
+                <label><img src="{{ url_for('static', filename='icons/estatistics.png') }}" alt="Área" class="icon"> Área</label>
                 <select id="area-filter">
                     <option value="all">Todas</option>
                     <option value="tech">Tecnologia</option>
@@ -151,7 +151,7 @@
                 </select>
             </div>
             <div class="filter-group">
-                <label><img src="{{ url_for('static', filename='icons/tools.png') }}" alt="Tipo"> Tipo</label>
+                <label><img src="{{ url_for('static', filename='icons/tools.png') }}" alt="Tipo" class="icon"> Tipo</label>
                 <select id="type-filter">
                     <option value="all">Todos</option>
                     <option value="job">Emprego</option>
@@ -168,7 +168,7 @@
                 <li>Programa Trainee Shell</li>
                 <li>Fellowship Ashoka</li>
             </ul>
-            <button>Ver Todas</button>
+            <button class="btn">Ver Todas</button>
         </div>
     </aside>
 </main>

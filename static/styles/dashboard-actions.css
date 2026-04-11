@@ -1,3 +1,9 @@
+/* ===== VARIABLES ===== */
+:root {
+    --color-primary: #667eea;
+    --color-text: #202020;
+}
+
 /* ===== ACTIONS ===== */
 
 .dashboard-actions {
@@ -6,17 +12,16 @@
     gap: 24px;
 }
 
-.dashboard-actions .card h3 {
+.dashboard-actions .card-heading {
     margin-top: 0;
     font-size: 15px;
     font-weight: 700;
-    color: #202020;
-    letter-spacing: -0.2px;
+    color: var(--color-text);
 }
 
-.dashboard-actions .card h3 img {
-    width: 20px;
-    height: 20px;
+.dashboard-actions .card-heading img {
+    width: 18px;
+    height: 18px;
     margin-right: 8px;
     vertical-align: middle;
 }
@@ -25,10 +30,7 @@
     font-size: 36px;
     font-weight: 800;
     margin: 12px 0;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--color-primary);
     text-align: center;
 }
 
@@ -46,41 +48,29 @@
     background: #28a745;
 }
 
-.dashboard-actions .card p {
-    color: #202020;
+.dashboard-actions .card-text {
+    color: var(--color-text);
     margin: 8px 0;
     font-size: 13px;
 }
 
-.dashboard-actions ol {
+.dashboard-actions .card-list {
     padding-left: 20px;
     font-size: 13px;
-    color: #202020;
+    color: var(--color-text);
 }
 
-.dashboard-actions li {
-    padding: 6px 0;
-}
-
-.dashboard-actions ul {
-    padding-left: 16px;
-    font-size: 13px;
-    color: #202020;
-    margin: 8px 0;
-    list-style: none;
-}
-
-.dashboard-actions li {
+.dashboard-actions .action-item {
     padding: 4px 0;
     padding-left: 20px;
     position: relative;
 }
 
-.dashboard-actions li:before {
+.dashboard-actions .action-item::before {
     content: "→";
     position: absolute;
     left: 0;
-    color: #667eea;
+    color: var(--color-primary);
     font-weight: 600;
 }
 
@@ -93,7 +83,7 @@
 }
 
 .feed-item {
-    border-left: 4px solid #667eea;
+    border-left: 4px solid var(--color-primary);
     padding-left: 20px;
 }
 
@@ -105,20 +95,20 @@
     border-left-color: #28a745;
 }
 
-.feed-item h3 {
+.feed-item-title {
     margin-top: 0;
     font-size: 16px;
     font-weight: 700;
-    color: #202020;
+    color: var(--color-text);
 }
 
-.feed-item p {
-    color: #202020;
+.feed-item-text {
+    color: var(--color-text);
     margin: 8px 0;
     font-size: 13px;
 }
 
-/* ===== WORLD PAGE ACTIONS ===== */
+/* ===== ONLINE USERS ===== */
 .online-users .online-list {
     margin: 16px 0;
 }
@@ -127,7 +117,7 @@
     display: flex;
     align-items: center;
     padding: 8px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .online-user:last-child {
@@ -135,16 +125,16 @@
 }
 
 .online-user img {
-    width: 32px;
-    height: 32px;
+    width: 28px;
+    height: 28px;
     border-radius: 50%;
     margin-right: 12px;
     border: 2px solid #4CAF50;
 }
 
-.online-user span {
+.online-user-name {
     font-size: 13px;
-    color: #202020;
+    color: var(--color-text);
     font-weight: 500;
 }
 

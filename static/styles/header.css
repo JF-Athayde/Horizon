@@ -1,34 +1,35 @@
 /* =========================
-   RESET + BASE
+   VARIABLES
 ========================= */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
-
-body {
-    font-family: 'Inter', sans-serif;
+:root {
+    --color-primary: #667eea;
+    --color-text: white;
+    --color-bg-dark: #1a1a2e;
+    --color-border-light: rgba(255, 255, 255, 0.1);
 }
 
 /* =========================
-   HEADER NÃO FIXO
+   RESET
+========================= */
+body {
+    margin: 0;
+    padding: 0;
+}
+
+/* =========================
+   HEADER
 ========================= */
 .header {
     position: relative;
     width: 100%;
-    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 25%, #0f3460 50%, #1a1a2e 75%, #16213e 100%);
-    backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    background: #1a1a2e;
+    border-bottom: 1px solid var(--color-border-light);
     color: white;
     z-index: 1000;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
 /* =========================
-   TOP BAR - LINHA 1
+   TOP BAR
 ========================= */
 .top-bar {
     display: flex;
@@ -55,7 +56,6 @@ body {
     transition: all 0.3s ease;
 }
 
-/* Animação para X */
 .menu-toggle.active .bar:nth-child(1) {
     transform: translateY(7px) rotate(45deg);
 }
@@ -76,10 +76,9 @@ body {
 }
 
 .logo img {
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     object-fit: contain;
-    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
 }
 
 .logo-text {
@@ -91,7 +90,6 @@ body {
     font-size: 24px;
     font-weight: 800;
     color: white;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .logo-subtitle {
@@ -102,7 +100,7 @@ body {
     text-transform: uppercase;
 }
 
-/* Menu de Navegação */
+/* Navigation */
 .main-nav {
     display: flex;
     gap: 8px;
@@ -119,64 +117,26 @@ body {
     color: rgba(255, 255, 255, 0.8);
     font-size: 14px;
     font-weight: 500;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-}
-
-.main-nav a::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-    transition: left 0.5s;
-}
-
-.main-nav a:hover::before {
-    left: 100%;
+    transition: all 0.2s ease;
 }
 
 .main-nav a:hover {
     color: white;
     background: rgba(255, 255, 255, 0.1);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .main-nav a.active {
     color: white;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
-}
-
-.main-nav a.active::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 20px;
-    height: 3px;
-    background: white;
-    border-radius: 2px;
+    background: var(--color-primary);
 }
 
 .main-nav img {
     width: 18px;
     height: 18px;
     filter: brightness(0) invert(1);
-    transition: all 0.3s ease;
 }
 
-.main-nav a:hover img,
-.main-nav a.active img {
-    transform: scale(1.1);
-}
-
-/* Perfil do Usuário */
+/* User Profile */
 .user-profile {
     display: flex;
     align-items: center;
@@ -184,15 +144,13 @@ body {
     padding: 8px 12px;
     border-radius: 20px;
     background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid var(--color-border-light);
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
 }
 
 .user-profile:hover {
-    background: rgba(255, 255, 255, 0.2);
-    transform: translateY(-1px);
+    background: rgba(255, 255, 255, 0.15);
 }
 
 .user-avatar {
@@ -200,7 +158,6 @@ body {
     height: 36px;
     border-radius: 50%;
     border: 2px solid #4CAF50;
-    box-shadow: 0 2px 8px rgba(76, 175, 80, 0.3);
 }
 
 .user-info {
@@ -221,16 +178,16 @@ body {
 }
 
 /* =========================
-   PAGE INDICATOR - LINHA 2
+   PAGE INDICATOR
 ========================= */
 .page-indicator {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 16px 24px;
-    background: rgba(255, 255, 255, 0.05);
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.02);
+    border-top: 1px solid var(--color-border-light);
+    border-bottom: 1px solid var(--color-border-light);
 }
 
 .page-info {
@@ -240,30 +197,29 @@ body {
 }
 
 .page-icon {
-    width: 48px;
-    height: 48px;
-    border-radius: 12px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background: var(--color-primary);
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
 }
 
 .page-icon img {
-    width: 24px;
-    height: 24px;
+    width: 18px;
+    height: 18px;
     filter: brightness(0) invert(1);
 }
 
-.page-details h4 {
+.page-details-title {
     font-size: 18px;
     font-weight: 700;
     color: white;
     margin-bottom: 4px;
 }
 
-.page-details p {
+.page-details-text {
     font-size: 13px;
     color: rgba(255, 255, 255, 0.7);
     max-width: 300px;
@@ -293,7 +249,7 @@ body {
 }
 
 /* =========================
-   PROGRESS BAR - LINHA 3
+   PROGRESS BAR
 ========================= */
 .progress-container {
     position: relative;
@@ -306,28 +262,12 @@ body {
 .progress-bar {
     height: 100%;
     width: 0%;
-    background: linear-gradient(90deg, #00d4ff 0%, #0099cc 25%, #667eea 50%, #764ba2 75%, #ff6b6b 100%);
+    background: var(--color-primary);
     transition: width 0.3s ease;
-    position: relative;
-}
-
-.progress-glow {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.3) 50%, transparent 100%);
-    animation: shimmer 2s infinite;
-}
-
-@keyframes shimmer {
-    0% { transform: translateX(-100%); }
-    100% { transform: translateX(100%); }
 }
 
 /* =========================
-   OVERLAY (MENU MOBILE)
+   MENU OVERLAY (MOBILE)
 ========================= */
 .menu-overlay {
     position: fixed;
@@ -336,7 +276,6 @@ body {
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(5px);
     opacity: 0;
     pointer-events: none;
     transition: all 0.3s ease;
@@ -349,7 +288,7 @@ body {
 }
 
 /* =========================
-   RESPONSIVO (MOBILE)
+   RESPONSIVE
 ========================= */
 @media (max-width: 1024px) {
     .main-nav {
@@ -368,7 +307,7 @@ body {
         padding: 12px 16px;
     }
 
-    .page-details p {
+    .page-details-text {
         max-width: 200px;
     }
 }
@@ -379,12 +318,12 @@ body {
     }
 
     .logo img {
-        width: 40px;
-        height: 40px;
+        width: 32px;
+        height: 32px;
     }
 
     .logo-main {
-        font-size: 20px;
+        font-size: 18px;
     }
 
     .page-indicator {
@@ -434,4 +373,209 @@ body {
 ========================= */
 html {
     scroll-behavior: smooth;
+}
+
+/* =========================
+   ÍCONES
+========================= */
+.icon {
+    width: 18px;
+    height: 18px;
+}
+
+h1 .icon, h2 .icon, h3 .icon, h4 .icon, h5 .icon, h6 .icon {
+    width: 18px;
+    height: 18px;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+button, .btn {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+/* Primary Button */
+.btn, 
+button:not(.apply-btn):not(.search-btn):not(.apply-filters-btn):not(.filter-btn):not(.action-btn):not(.interest-btn):not(.view-all-btn):not(.quick-action-btn):not(.post-option):not(.vote-btn) {
+    background: var(--color-primary);
+    color: white;
+}
+
+.btn:hover,
+button:not(.apply-btn):not(.search-btn):not(.apply-filters-btn):not(.filter-btn):not(.action-btn):not(.interest-btn):not(.view-all-btn):not(.quick-action-btn):not(.post-option):not(.vote-btn):hover {
+    background: #5568d3;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.btn:active,
+button:not(.apply-btn):not(.search-btn):not(.apply-filters-btn):not(.filter-btn):not(.action-btn):not(.interest-btn):not(.view-all-btn):not(.quick-action-btn):not(.post-option):not(.vote-btn):active {
+    background: #4556b8;
+    transform: translateY(0);
+}
+
+/* Apply Button */
+.apply-btn {
+    background: var(--color-primary);
+    color: white;
+    padding: 10px 16px;
+    font-size: 13px;
+}
+
+.apply-btn:hover {
+    background: #5568d3;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.apply-btn:active {
+    background: #4556b8;
+}
+
+/* Filter Button */
+.filter-btn {
+    background: transparent;
+    border: 1px solid #e5e7eb;
+    color: #6b7280;
+    padding: 8px 16px;
+    font-size: 13px;
+}
+
+.filter-btn:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+}
+
+.filter-btn.active {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+    color: white;
+}
+
+/* Action Button */
+.action-btn {
+    background: transparent;
+    border: 1px solid #e5e7eb;
+    color: #6b7280;
+    padding: 8px 12px;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.action-btn:hover {
+    background: #f3f4f6;
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+}
+
+.action-btn.interest-btn {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+    color: white;
+}
+
+.action-btn.interest-btn:hover {
+    background: #5568d3;
+}
+
+/* Search Button */
+.search-btn {
+    background: var(--color-primary);
+    color: white;
+    padding: 10px 14px;
+    font-size: 16px;
+    border-radius: 0 6px 6px 0;
+}
+
+.search-btn:hover {
+    background: #5568d3;
+}
+
+/* Apply Filters Button */
+.apply-filters-btn {
+    background: var(--color-primary);
+    color: white;
+}
+
+.apply-filters-btn:hover {
+    background: #5568d3;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+/* View All Button */
+.view-all-btn {
+    background: var(--color-primary);
+    color: white;
+}
+
+.view-all-btn:hover {
+    background: #5568d3;
+}
+
+/* Post Option Button */
+.post-option {
+    background: transparent;
+    border: 1px solid #e5e7eb;
+    color: #6b7280;
+    padding: 8px 12px;
+    font-size: 13px;
+}
+
+.post-option:hover {
+    background: #f3f4f6;
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+}
+
+/* Quick Action Button */
+.quick-action-btn {
+    background: white;
+    border: 1px solid #e5e7eb;
+    color: #6b7280;
+    padding: 10px 16px;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.quick-action-btn:hover {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+    color: white;
+}
+
+/* Vote Button */
+.vote-btn {
+    background: transparent;
+    border: 1px solid #e5e7eb;
+    color: #6b7280;
+    padding: 6px 12px;
+    font-size: 12px;
+}
+
+.vote-btn.upvote {
+    color: #10b981;
+    border-color: #10b981;
+}
+
+.vote-btn.upvote:hover {
+    background: #d1fae5;
+}
+
+.vote-btn.downvote {
+    color: #ef4444;
+    border-color: #ef4444;
+}
+
+.vote-btn.downvote:hover {
+    background: #fee;
 }

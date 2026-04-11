@@ -31,28 +31,20 @@
         </div>
 
         <nav class="dashboard-menu">
-            <a href="{{ url_for('home') }}"><img src="{{ url_for('static', filename='icons/dashboard.png') }}" alt="Dashboard"> Dashboard</a>
-            <a href="{{ url_for('profile') }}"><img src="{{ url_for('static', filename='icons/profile.png') }}" alt="Identity"> Identity</a>
-            <a href="{{ url_for('connect') }}"><img src="{{ url_for('static', filename='icons/oportunites.png') }}" alt="Connect"> Connect</a>
-            <a href="{{ url_for('explore') }}"><img src="{{ url_for('static', filename='icons/planet-earth.png') }}" alt="Explore"> Explore</a>
-            <a href="{{ url_for('world') }}"><img src="{{ url_for('static', filename='icons/net.png') }}" alt="World"> World</a>
-            <a href="{{ url_for('future') }}"><img src="{{ url_for('static', filename='icons/star.png') }}" alt="Future"> Future</a>
-            <a href="#"><img src="{{ url_for('static', filename='icons/settings.png') }}" alt="Settings"> Settings</a>
+            <a href="{{ url_for('home') }}"><img src="{{ url_for('static', filename='icons/dashboard.png') }}" alt="Dashboard" class="icon"> Dashboard</a>
+            <a href="{{ url_for('profile') }}"><img src="{{ url_for('static', filename='icons/profile.png') }}" alt="Identity" class="icon"> Identity</a>
+            <a href="{{ url_for('connect') }}"><img src="{{ url_for('static', filename='icons/oportunites.png') }}" alt="Connect" class="icon"> Connect</a>
+            <a href="{{ url_for('explore') }}"><img src="{{ url_for('static', filename='icons/planet-earth.png') }}" alt="Explore" class="icon"> Explore</a>
+            <a href="{{ url_for('world') }}"><img src="{{ url_for('static', filename='icons/net.png') }}" alt="World" class="icon"> World</a>
+            <a href="{{ url_for('future') }}"><img src="{{ url_for('static', filename='icons/star.png') }}" alt="Future" class="icon"> Future</a>
+            <a href="#"><img src="{{ url_for('static', filename='icons/settings.png') }}" alt="Settings" class="icon"> Settings</a>
         </nav>
     </aside>
 
     <section class="dashboard-middle">
         <div class="job-results-header">
-            <h3><img src="{{ url_for('static', filename='icons/planet-earth.png') }}" alt="Explore"> Explorar Oportunidades Globais</h3>
+            <h3><img src="{{ url_for('static', filename='icons/planet-earth.png') }}" alt="Explore" class="icon"> Explorar Oportunidades Globais</h3>
             <p>Descubra oportunidades ao redor do mundo</p>
-        </div>
-
-        <div class="card">
-            <h3>🌍 Mapa Global Interativo</h3>
-            <div style="height: 300px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center; border-radius: 8px;">
-                <p style="color: white; font-size: 18px;">Mapa das oportunidades globais</p>
-                <div style="position: absolute; top: 10px; left: 10px; background: rgba(255,255,255,0.8); padding: 5px; border-radius: 4px;">🔍 Zoom disponível</div>
-            </div>
         </div>
 
         <div class="filter-tags">
@@ -66,7 +58,7 @@
             <div class="job-item" data-category="remoto">
                 <div class="job-header">
                     <div class="job-icon">
-                        <img src="{{ url_for('static', filename='icons/tools.png') }}" alt="Job">
+                        <img src="{{ url_for('static', filename='icons/tools.png') }}" alt="Job" class="icon">
                     </div>
                     <div class="job-title-info">
                         <h4>Desenvolvedor Remoto</h4>
@@ -87,7 +79,7 @@
             <div class="job-item" data-category="presencial">
                 <div class="job-header">
                     <div class="job-icon">
-                        <img src="{{ url_for('static', filename='icons/tools.png') }}" alt="Job">
+                        <img src="{{ url_for('static', filename='icons/tools.png') }}" alt="Job" class="icon"
                     </div>
                     <div class="job-title-info">
                         <h4>Engenheiro de Projetos</h4>
@@ -142,13 +134,13 @@
         </div>
 
         <div class="card">
-            <h3><img src="{{ url_for('static', filename='icons/tools.png') }}" alt="Tendências"> Tendências Globais</h3>
+            <h3><img src="{{ url_for('static', filename='icons/tools.png') }}" alt="Tendências" class="icon"> Tendências Globais</h3>
             <ul>
                 <li>IA em Saúde: +25%</li>
                 <li>Sustentabilidade: +18%</li>
                 <li>Trabalho Remoto: +30%</li>
             </ul>
-            <button>Ver Relatório</button>
+            <button class="btn">Ver Relatório</button>
         </div>
     </aside>
 </main>

@@ -11,21 +11,21 @@
     <aside class="profile-sidebar">
         <div class="card profile-summary">
             <div class="profile-picture">
-                <img src="{{ url_for('static', filename='assets/jf.png') }}" alt="Foto de Perfil">
+                <img src="{{ url_for('static', filename=current_user.foto_perfil) }}" alt="Foto de Perfil">
             </div>
-            <h1>Fellipe (JF) Athayde</h1>
-            <h2>Full-Stack Developer, ML Researcher</h2>
-            <p>Fortaleza - CE • Brasil</p>
-            <span class="chip">Future Global Leader | Tech & Impact</span>
+            <h1>{{ current_user.nome_completo or current_user.username }}</h1>
+            <h2>{{ current_user.cargo or 'Membro da Plataforma' }}</h2>
+            <p>{{ current_user.localizacao }}</p>
+            <span class="chip">{{ current_user.cargo or 'Future Global Leader' }} | Tech & Impact</span>
         </div>
 
         <div class="card quick-stats">
             <h3>Prontidão para Emprego</h3>
-            <p class="large-score" id="job-readiness">72%</p>
+            <p class="large-score" id="job-readiness">{{ current_user.job_readiness or 0 }}%</p>
             <ul>
                 <li>Match atual: 88% com oportunidades de desenvolvimento</li>
                 <li>Soft skills: Comunicação, Liderança, Colaboração</li>
-                <li>Hard skills: Python, React, SQL, IA</li>
+                <li>Hard skills: {{ current_user.skills or 'Em construção' }}</li>
             </ul>
         </div>
 
@@ -36,18 +36,18 @@
                 <li>Publicar 1 novo case no portfólio</li>
                 <li>Marcar 3 vagas e candidatar em 24h</li>
             </ol>
-            <button id="apply-jobs">Candidatar agora</button>
+            <button id="apply-jobs" class="btn">Candidatar agora</button>
         </div>
     </aside>
 
     <section class="profile-content">
         <div class="card section-identity">
             <h2>Identidade Global</h2>
-            <p>Objetivo: Construir carreira global em product & AI, focando impacto social e inovação com escala.</p>
+            <p>{{ current_user.bio or 'Objetivo: Construir carreira global focando impacto social e inovação com escala.' }}</p>
             <div class="tags">
-                <span>Empreendedorismo Tech</span>
-                <span>Educação Internacional</span>
-                <span>Impacto Social</span>
+                {% for interes in current_user.get_interesses_list() %}
+                <span>{{ interes }}</span>
+                {% endfor %}
             </div>
         </div>
 
@@ -56,18 +56,16 @@
                 <h2>Vídeo de Apresentação</h2>
                 <small>60-90s: Quem sou | O que busco | Impacto futuro</small>
             </div>
-            <button id="record-profile-video">Gravar vídeo</button>
+            <button id="record-profile-video" class="btn">Gravar vídeo</button>
             <p class="hint">Use seu smartphone / webcam e compartilhe o link para recrutadores.</p>
-            <div class="video-state" id="profile-video-state">Nenhum vídeo registrado.</div>
+            <div class="video-state" id="profile-video-state">{% if current_user.video_apresentacao %}{{ current_user.video_apresentacao }}{% else %}Nenhum vídeo registrado.{% endif %}</div>
         </div>
 
         <div class="card section-academic">
             <h2>Perfil Acadêmico</h2>
             <ul>
-                <li><img src="{{ url_for('static', filename='icons/resume.png') }}" alt="Bacharel"> Bacharel em Engenharia de Computação (Universidade Federal do Ceará) – Conclusão 2025</li>
-                <li><img src="{{ url_for('static', filename='icons/resume.png') }}" alt="Cursos"> Cursos: Data Science, MLOps, Product Management (Coursera + Udemy)</li>
-                <li><img src="{{ url_for('static', filename='icons/planet-earth.png') }}" alt="Idiomas"> Idiomas: Português (Nativo), Inglês (Avançado - TOEFL 100), Espanhol (Intermediário)</li>
-                <li><img src="{{ url_for('static', filename='icons/estatistics.png') }}" alt="Pesquisa"> Pesquisa: Coautor em artigo sobre fairness em modelos preditivos (SBC 2024)</li>
+                <li><img src="{{ url_for('static', filename='icons/resume.png') }}" alt="Bacharel" class="icon"> {{ current_user.nivel_academico or 'Nível acadêmico' }} ({{ current_user.instituicao or 'Instituição' }}) – Conclusão {{ current_user.ano_conclusao or '----' }}</li>
+                <li><img src="{{ url_for('static', filename='icons/planet-earth.png') }}" alt="Idiomas" class="icon"> Idiomas: {{ current_user.idiomas }}</li>
             </ul>
             <p class="advice">IA sugere: adicionar certificado de AWS/GCP para aumentar score de vaga em 10 pontos.</p>
         </div>
@@ -75,67 +73,59 @@
         <div class="card section-professional">
             <h2>Perfil Profissional</h2>
             <ul>
-                <li><img src="{{ url_for('static', filename='icons/oportunites.png') }}" alt="Estágio"> Estágio em SaaS Analytics (abril 2023 - presente): planejamento, arquitetura e implementação de ETL</li>
-                <li><img src="{{ url_for('static', filename='icons/bolt.png') }}" alt="Projeto"> Projeto: plataforma de matchmaking acadêmico com ML (redução de 30% em tempo de seleção)</li>
-                <li><img src="{{ url_for('static', filename='icons/star.png') }}" alt="Soft skills"> Soft skills: gestão ágil, trabalho remoto multinacional, orientação a resultados</li>
+                {% if current_user.experiencia %}
+                <li><img src="{{ url_for('static', filename='icons/oportunites.png') }}" alt="Experiência" class="icon"> {{ current_user.experiencia }}</li>
+                {% endif %}
+                {% if current_user.projetos %}
+                <li><img src="{{ url_for('static', filename='icons/bolt.png') }}" alt="Projeto" class="icon"> {{ current_user.projetos }}</li>
+                {% endif %}
             </ul>
 
             <div class="skill-grid">
+                {% set skills_list = current_user.get_skills_list() %}
+                {% for skill in skills_list[:4] %}
                 <div>
-                    <h4>Python</h4>
-                    <div class="skill-bar"><span style="width: 92%"></span></div>
+                    <h4>{{ skill }}</h4>
+                    <div class="skill-bar"><span style="width: 75%"></span></div>
                 </div>
-                <div>
-                    <h4>React</h4>
-                    <div class="skill-bar"><span style="width: 85%"></span></div>
-                </div>
-                <div>
-                    <h4>SQL</h4>
-                    <div class="skill-bar"><span style="width: 88%"></span></div>
-                </div>
-                <div>
-                    <h4>Machine Learning</h4>
-                    <div class="skill-bar"><span style="width: 79%"></span></div>
-                </div>
+                {% endfor %}
             </div>
         </div>
 
         <div class="two-columns">
             <div class="card section-portfolio">
                 <h2>Portfólio Vivo</h2>
+                {% if current_user.projetos %}
                 <div class="project">
-                    <h4>EduTech Impact</h4>
-                    <p>Problema: baixa retenção de estudantes em cursos remotos.</p>
-                    <p>Solução: engine adaptativa e notificações comportamentais; +40% retenção.</p>
-                    <p>Impacto: 2.300 alunos engajados, 150+ avaliações 5 estrelas.</p>
-                    <p>Score de Impacto: <strong>87</strong></p>
-                    <a href="https://github.com/jfathayde/edutech-impact" target="_blank">Ver repositório</a>
+                    <p>{{ current_user.projetos }}</p>
                 </div>
-                <div class="project">
-                    <h4>ApplyNow - Protótipo PEI</h4>
-                    <p>Problema: perfil estático e processos de matching imprecisos.</p>
-                    <p>Solução: dashboard evolutivo + IA de oportunidade.</p>
-                    <p>Impacto: produto validado em hackathon M60. <strong>3 prêmios</strong>.</p>
-                    <a href="#">Ver projeto</a>
-                </div>
-                <button id="add-portfolio-item">Adicionar novo projeto</button>
+                {% endif %}
+                <button id="add-portfolio-item" class="btn">Adicionar novo projeto</button>
             </div>
 
             <div class="card section-ods">
                 <h2>Impacto & ODS</h2>
                 <p>Relate iniciativas aos Objetivos de Desenvolvimento Sustentável:</p>
                 <ul>
-                    <li>ODS 4: Qualidade da Educação - plataforma adaptativa para alunos remotos</li>
-                    <li>ODS 9: Indústria, Inovação e Infraestrutura - soluções de dados para startups</li>
-                    <li>ODS 10: Redução das Desigualdades - bolsas de estudo + mentorias gratuitas</li>
+                    {% for ods in current_user.get_ods_list() %}
+                    <li>{{ ods }}</li>
+                    {% endfor %}
                 </ul>
             </div>
 
             <div class="card section-global-score">
                 <h2>Score Global de Prontidão</h2>
-                <div class="score-display" id="global-score">72%</div>
-                <div class="mini-progress"><span style="width:72%"></span></div>
+                <div class="score-display" id="global-score">{{ current_user.score_global or 0 }}%</div>
+                <div class="mini-progress"><span style="width:{{ current_user.score_global or 0 }}%"></span></div>
                 <p>Baseado em habilidades, experiências, vídeo e potencial de impacto.</p>
+            </div>
+
+            <div class="card section-applications">
+                <h2>📋 Candidaturas Realizadas</h2>
+                <p style="font-size: 14px; color: #6b7280; margin-bottom: 16px;">Acompanhe o status de suas candidaturas a vagas</p>
+                <div id="applications-container" style="min-height: 200px; display: flex; align-items: center; justify-content: center; color: #9CA3AF;">
+                    <span>Carregando candidaturas...</span>
+                </div>
             </div>
         </div>
     </section>
@@ -148,7 +138,7 @@
                 <li>Bolsa Pesquisa IA (MIT) - Match 88%</li>
                 <li>Fellowship de Impacto (Ashoka) - Match 86%</li>
             </ul>
-            <button id="apply-recommended">Aplicar nas oportunidades</button>
+            <button id="apply-recommended" class="btn">Aplicar nas oportunidades</button>
         </div>
 
         <div class="card">
@@ -158,7 +148,7 @@
                 <li>Publicar vídeo de apresentação</li>
                 <li>Concluir missão 'ODS no Portfólio'</li>
             </ol>
-            <button id="mark-ODS">Marcar missão concluída</button>
+            <button id="mark-ODS" class="btn">Marcar missão concluída</button>
         </div>
     </aside>
 </main>
@@ -166,4 +156,154 @@
 
 {% block footer %}
 {% include "footer.html" %}
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+// Função para renderizar candidaturas
+function renderApplications(applications) {
+    const container = document.getElementById('applications-container');
+    
+    if (!applications || applications.length === 0) {
+        container.innerHTML = '<p style="text-align: center; color: #9CA3AF;">Nenhuma candidatura realizada ainda. <a href="{{ url_for("home") }}" style="color: #667eea; text-decoration: none;">Explore vagas</a></p>';
+        return;
+    }
+    
+    // Agrupar por status
+    const byStatus = {};
+    applications.forEach(app => {
+        if (!byStatus[app.status]) byStatus[app.status] = [];
+        byStatus[app.status].push(app);
+    });
+    
+    let html = '<div style="display: grid; gap: 12px;">';
+    
+    const statusConfig = {
+        'candidatado': { color: '#667eea', label: '📤 Candidatado' },
+        'entrevista': { color: '#f59e0b', label: '📞 Em Entrevista' },
+        'aceito': { color: '#10b981', label: '✅ Aceito' },
+        'rejeitado': { color: '#ef4444', label: '❌ Rejeitado' }
+    };
+    
+    Object.entries(byStatus).forEach(([status, apps]) => {
+        const config = statusConfig[status] || statusConfig['candidatado'];
+        
+        html += `<div style="border-left: 4px solid ${config.color}; padding: 12px; background: #f9fafb; border-radius: 4px;">`;
+        html += `<h4 style="margin: 0 0 12px 0; color: ${config.color};">${config.label}</h4>`;
+        
+        apps.forEach(app => {
+            html += `
+                <div style="padding: 12px; background: white; border-radius: 6px; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center; border: 1px solid #e5e7eb;">
+                    <div>
+                        <h5 style="margin: 0 0 4px 0; font-size: 14px; font-weight: 600;">${app.job_title}</h5>
+                        <p style="margin: 0 0 4px 0; font-size: 13px; color: #6b7280;">${app.company}</p>
+                        <p style="margin: 0; font-size: 12px; color: #9CA3AF;">${app.created_at}</p>
+                    </div>
+                    <div style="text-align: right;">
+                        <p style="margin: 0 0 8px 0; font-size: 13px; color: #667eea; font-weight: 600;">Match: ${app.match_score}%</p>
+                        <button onclick="withdrawApplication(${app.id})" style="background: #ef4444; color: white; border: none; padding: 6px 12px; border-radius: 4px; font-size: 11px; cursor: pointer; transition: background 0.2s;" onmouseover="this.style.background='#dc2626'" onmouseout="this.style.background='#ef4444'">Cancelar</button>
+                    </div>
+                </div>
+            `;
+        });
+        
+        html += '</div>';
+    });
+    
+    html += '</div>';
+    container.innerHTML = html;
+}
+
+// Função para carregar candidaturas
+function loadApplications() {
+    fetch('{{ url_for("get_applications") }}')
+    .then(response => response.json())
+    .then(data => {
+        renderApplications(data);
+    })
+    .catch(error => {
+        console.error('Erro ao carregar candidaturas:', error);
+        document.getElementById('applications-container').innerHTML = '<p style="color: #ef4444;">Erro ao carregar candidaturas.</p>';
+    });
+}
+
+// Função para mostrar notificação
+function showNotification(message, type = 'info') {
+    const notification = document.createElement('div');
+    notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        padding: 16px 24px;
+        border-radius: 8px;
+        color: white;
+        font-weight: 600;
+        z-index: 10000;
+        animation: slideIn 0.3s ease;
+        background: ${type === 'success' ? '#10b981' : type === 'error' ? '#ef4444' : '#667eea'};
+    `;
+    notification.textContent = message;
+    document.body.appendChild(notification);
+    
+    setTimeout(() => {
+        notification.style.animation = 'slideOut 0.3s ease';
+        setTimeout(() => notification.remove(), 300);
+    }, 3000);
+}
+
+// Função para cancelar candidatura
+function withdrawApplication(appId) {
+    if (!confirm('Tem certeza que deseja cancelar esta candidatura?')) {
+        return;
+    }
+    
+    fetch(`{{ url_for('withdraw_application', app_id=0) }}`.replace('0', appId), {
+        method: 'POST',
+        headers: {
+            'X-CSRFToken': document.querySelector('[name=csrf_token]')?.value || ''
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        showNotification(data.message, data.success ? 'success' : 'error');
+        if (data.success) {
+            loadApplications();
+        }
+    })
+    .catch(error => {
+        console.error('Erro:', error);
+        showNotification('Erro ao cancelar candidatura.', 'error');
+    });
+}
+
+// Carregar candidaturas ao abrir a página
+loadApplications();
+
+// Adicionar estilos para animação
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes slideIn {
+        from {
+            transform: translateX(400px);
+            opacity: 0;
+        }
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+    
+    @keyframes slideOut {
+        from {
+            transform: translateX(0);
+            opacity: 1;
+        }
+        to {
+            transform: translateX(400px);
+            opacity: 0;
+        }
+    }
+`;
+document.head.appendChild(style);
+</script>
 {% endblock %}

@@ -20,62 +20,70 @@
         <!-- Menu de Navegação -->
         <nav class="main-nav" id="main-nav">
             <a href="{{ url_for('home') }}" class="{% if request.endpoint == 'home' %}active{% endif %}">
-                <img src="{{ url_for('static', filename='icons/dashboard.png') }}" alt="Dashboard">
+                <img src="{{ url_for('static', filename='icons/dashboard.png') }}" alt="Dashboard" class="icon">
                 <span>Dashboard</span>
             </a>
 
             <a href="{{ url_for('profile') }}" class="{% if request.endpoint == 'profile' %}active{% endif %}">
-                <img src="{{ url_for('static', filename='icons/profile.png') }}" alt="Profile">
+                <img src="{{ url_for('static', filename='icons/profile.png') }}" alt="Profile" class="icon">
                 <span>Profile</span>
             </a>
 
             <a href="{{ url_for('connect') }}" class="{% if request.endpoint == 'connect' %}active{% endif %}">
-                <img src="{{ url_for('static', filename='icons/oportunites.png') }}" alt="Connect">
+                <img src="{{ url_for('static', filename='icons/oportunites.png') }}" alt="Connect" class="icon">
                 <span>Connect</span>
             </a>
 
             <a href="{{ url_for('explore') }}" class="{% if request.endpoint == 'explore' %}active{% endif %}">
-                <img src="{{ url_for('static', filename='icons/planet-earth.png') }}" alt="Explore">
+                <img src="{{ url_for('static', filename='icons/planet-earth.png') }}" alt="Explore" class="icon">
                 <span>Explore</span>
             </a>
 
             <a href="{{ url_for('world') }}" class="{% if request.endpoint == 'world' %}active{% endif %}">
-                <img src="{{ url_for('static', filename='icons/net.png') }}" alt="World">
+                <img src="{{ url_for('static', filename='icons/net.png') }}" alt="World" class="icon">
                 <span>World</span>
             </a>
 
             <a href="{{ url_for('future') }}" class="{% if request.endpoint == 'future' %}active{% endif %}">
-                <img src="{{ url_for('static', filename='icons/star.png') }}" alt="Future">
+                <img src="{{ url_for('static', filename='icons/star.png') }}" alt="Future" class="icon"
                 <span>Future</span>
             </a>
         </nav>
 
         <!-- Perfil do Usuário -->
         <div class="user-profile">
-            <img src="{{ url_for('static', filename='assets/jf.png') }}" alt="Perfil" class="user-avatar">
+            <img src="{{ url_for('static', filename=current_user.foto_perfil) }}" alt="Perfil" class="user-avatar">
             <div class="user-info">
-                <span class="user-name">Fellipe Athayde</span>
+                <span class="user-name">{{ current_user.nome_completo or current_user.username }}</span>
                 <span class="user-status">Online</span>
+            </div>
+            <div class="user-menu" style="position: absolute; top: 70px; right: 0; background: white; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); min-width: 150px; display: none; z-index: 1000;">
+                <a href="{{ url_for('profile') }}" style="display: block; padding: 12px 16px; text-decoration: none; color: #333;">Perfil</a>
+                <a href="{{ url_for('auth.change_password') }}" style="display: block; padding: 12px 16px; text-decoration: none; color: #333;">Alterar Senha</a>
+                <a href="{{ url_for('auth.logout') }}" style="display: block; padding: 12px 16px; text-decoration: none; color: #d9534f; border-top: 1px solid #eee;">Sair</a>
             </div>
         </div>
     </div>
+
+    <!-- Menu Overlay Mobile -->
+    <div class="menu-overlay" id="menu-overlay"></div>
 
     <!-- Linha 2 - Indicador de Página e Barra de Progresso -->
     <div class="page-indicator">
         <div class="page-info">
             <div class="page-icon">
                 {% if request.endpoint == 'home' %}
-                    <img src="{{ url_for('static', filename='icons/dashboard.png') }}" alt="Dashboard">
+                    <img src="{{ url_for('static', filename='icons/dashboard.png') }}" alt="Dashboard" class="icon">
                 {% elif request.endpoint == 'profile' %}
-                    <img src="{{ url_for('static', filename='icons/profile.png') }}" alt="Profile">
+                    <img src="{{ url_for('static', filename='icons/profile.png') }}" alt="Profile" class="icon">
                 {% elif request.endpoint == 'connect' %}
-                    <img src="{{ url_for('static', filename='icons/oportunites.png') }}" alt="Connect">
+                    <img src="{{ url_for('static', filename='icons/oportunites.png') }}" alt="Connect" class="icon">
                 {% elif request.endpoint == 'explore' %}
-                    <img src="{{ url_for('static', filename='icons/planet-earth.png') }}" alt="Explore">
+                    <img src="{{ url_for('static', filename='icons/planet-earth.png') }}" alt="Explore" class="icon">
                 {% elif request.endpoint == 'world' %}
-                    <img src="{{ url_for('static', filename='icons/net.png') }}" alt="World">
+                    <img src="{{ url_for('static', filename='icons/net.png') }}" alt="World" class="icon">
                 {% elif request.endpoint == 'future' %}
-                    <img src="{{ url_for('static', filename='icons/star.png') }}" alt="Future">
+                    <img src="{{ url_for('static', filename='icons/star.png') }}" alt="Future" class="icon">
                 {% endif %}
             </div>
             <div class="page-details">
@@ -90,11 +98,11 @@
         <div class="page-stats">
             <div class="stat-item">
                 <span class="stat-label">Score Global</span>
-                <span class="stat-value">72%</span>
+                <span class="stat-value">{{ current_user.score_global or 0 }}%</span>
             </div>
             <div class="stat-item">
                 <span class="stat-label">Conexões</span>
-                <span class="stat-value">247</span>
+                <span class="stat-value">{{ current_user.conexoes_count or 0 }}</span>
             </div>
         </div>
     </div>

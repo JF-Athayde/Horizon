@@ -1,23 +1,11 @@
 /* ===== DASHBOARD STYLES - BASE ===== */
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700;800&display=swap');
-
-* {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-
-/* ===== HEADER MANTÉM BRANCO ===== */
-.header * {
-    color: #ffffff !important;
-}
-
-body {
-    font-family: 'Roboto', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
-    font-weight: 400;
-    color: #202020;
-    background: linear-gradient(135deg, #fafafa 0%, #f5f5f5 100%);
-    line-height: 1.6;
+:root {
+    --color-primary: #667eea;
+    --color-text: #202020;
+    --color-text-light: #6b7280;
+    --color-bg: #ffffff;
+    --color-border: #e5e7eb;
 }
 
 /* ===== LAYOUT ===== */
@@ -32,44 +20,51 @@ body {
     margin: 0 auto;
 }
 
-/* ===== CARDS - MODERNE ===== */
+/* ===== CARDS ===== */
 
 .card {
-    background: #ffffff;
+    background: var(--color-bg);
     border-radius: 6px;
-    border: 1px solid #e5e7eb;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+    border: 1px solid var(--color-border);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
     padding: 20px;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: border-color 0.2s ease;
 }
 
 .card:hover {
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
     border-color: #d1d5db;
 }
 
-/* ===== BOTÕES - MODERN ===== */
-button {
+/* ===== BUTTONS ===== */
+
+.btn-primary {
     width: 100%;
     padding: 12px 16px;
     border-radius: 4px;
     border: none;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: var(--color-primary);
     color: #ffffff;
     font-weight: 600;
     font-size: 13px;
     cursor: pointer;
     margin-top: 12px;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
-    letter-spacing: 0.3px;
+    transition: background 0.2s ease;
 }
 
-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(102, 126, 234, 0.4);
+.btn-primary:hover {
+    background: #5568d3;
 }
 
-button:active {
-    transform: translateY(0);
+.btn-primary:active {
+    background: #4556b8;
+}
+
+.icon {
+    width: 18px;
+    height: 18px;
+}
+
+h1 .icon, h2 .icon, h3 .icon, h4 .icon, h5 .icon, h6 .icon {
+    width: 18px;
+    height: 18px;
 }

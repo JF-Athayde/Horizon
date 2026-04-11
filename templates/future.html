@@ -31,19 +31,19 @@
         </div>
 
         <nav class="dashboard-menu">
-            <a href="{{ url_for('home') }}"><img src="{{ url_for('static', filename='icons/dashboard.png') }}" alt="Dashboard"> Dashboard</a>
-            <a href="{{ url_for('profile') }}"><img src="{{ url_for('static', filename='icons/profile.png') }}" alt="Identity"> Identity</a>
-            <a href="{{ url_for('connect') }}"><img src="{{ url_for('static', filename='icons/oportunites.png') }}" alt="Connect"> Connect</a>
-            <a href="{{ url_for('explore') }}"><img src="{{ url_for('static', filename='icons/planet-earth.png') }}" alt="Explore"> Explore</a>
-            <a href="{{ url_for('world') }}"><img src="{{ url_for('static', filename='icons/net.png') }}" alt="World"> World</a>
-            <a href="{{ url_for('future') }}"><img src="{{ url_for('static', filename='icons/star.png') }}" alt="Future"> Future</a>
-            <a href="#"><img src="{{ url_for('static', filename='icons/settings.png') }}" alt="Settings"> Settings</a>
+            <a href="{{ url_for('home') }}"><img src="{{ url_for('static', filename='icons/dashboard.png') }}" alt="Dashboard" class="icon"> Dashboard</a>
+            <a href="{{ url_for('profile') }}"><img src="{{ url_for('static', filename='icons/profile.png') }}" alt="Identity" class="icon"> Identity</a>
+            <a href="{{ url_for('connect') }}"><img src="{{ url_for('static', filename='icons/oportunites.png') }}" alt="Connect" class="icon"> Connect</a>
+            <a href="{{ url_for('explore') }}"><img src="{{ url_for('static', filename='icons/planet-earth.png') }}" alt="Explore" class="icon"> Explore</a>
+            <a href="{{ url_for('world') }}"><img src="{{ url_for('static', filename='icons/net.png') }}" alt="World" class="icon"> World</a>
+            <a href="{{ url_for('future') }}"><img src="{{ url_for('static', filename='icons/star.png') }}" alt="Future" class="icon"> Future</a>
+            <a href="#"><img src="{{ url_for('static', filename='icons/settings.png') }}" alt="Settings" class="icon"> Settings</a>
         </nav>
     </aside>
 
     <section class="dashboard-middle">
         <div class="job-results-header">
-            <h3><img src="{{ url_for('static', filename='icons/star.png') }}" alt="Future"> Horizon Future</h3>
+            <h3><img src="{{ url_for('static', filename='icons/star.png') }}" alt="Future" class="icon"> Horizon Future</h3>
             <p>Co-criação do futuro da plataforma</p>
         </div>
 
@@ -107,32 +107,32 @@
 
     <aside class="dashboard-actions">
         <div class="card">
-            <h3><img src="https://via.placeholder.com/20x20?text=V" alt="Votação"> Minhas Votações</h3>
+            <h3><img src="https://via.placeholder.com/20x20?text=V" alt="Votação" class="icon"> Minhas Votações</h3>
             <ul>
                 <li>Sistema de Badges: 👍</li>
                 <li>Modo Offline: 👍</li>
                 <li>Integração ODS: 👍</li>
             </ul>
-            <button>Ver Todas as Ideias</button>
+            <button class="btn">Ver Todas as Ideias</button>
         </div>
 
         <div class="card">
-            <h3><img src="https://via.placeholder.com/20x20?text=S" alt="Status"> Status das Minhas Ideias</h3>
+            <h3><img src="https://via.placeholder.com/20x20?text=S" alt="Status" class="icon"> Status das Minhas Ideias</h3>
             <ul>
                 <li>Ideia #123: Em análise</li>
                 <li>Ideia #145: Aprovada para desenvolvimento</li>
             </ul>
-            <button>Submeter Nova Ideia</button>
+            <button class="btn">Submeter Nova Ideia</button>
         </div>
 
         <div class="card">
-            <h3><img src="https://via.placeholder.com/20x20?text=T" alt="Top"> Top Contribuidores</h3>
+            <h3><img src="https://via.placeholder.com/20x20?text=T" alt="Top" class="icon"> Top Contribuidores</h3>
             <ol>
                 <li>Maria Silva - 150 pontos</li>
                 <li>João Santos - 120 pontos</li>
                 <li>Ana Costa - 95 pontos</li>
             </ol>
-            <button>Ver Ranking Completo</button>
+            <button class="btn">Ver Ranking Completo</button>
         </div>
     </aside>
 </main>

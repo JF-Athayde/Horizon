@@ -1,3 +1,15 @@
+/* ===== VARIABLES ===== */
+:root {
+    --color-primary: #667eea;
+    --color-text: #202020;
+    --color-bg: #ffffff;
+    --color-border: #e5e7eb;
+}
+
+.stat-item span {
+    color: black;
+}
+
 /* ===== MIDDLE ===== */
 .dashboard-middle {
     display: flex;
@@ -10,60 +22,59 @@
     background: transparent;
     border: none;
     padding: 0;
-    backdrop-filter: none;
 }
 
-.job-results-header h3 {
+.job-results-header-title {
     margin: 0 0 8px 0;
     font-size: 18px;
     font-weight: 700;
-    color: #202020;
+    color: var(--color-text);
     display: flex;
     align-items: center;
 }
 
-.job-results-header h3 img {
-    width: 20px;
-    height: 20px;
+.job-results-header-title img {
+    width: 18px;
+    height: 18px;
     margin-right: 8px;
 }
 
-.job-results-header p {
+.job-results-header-text {
     margin: 0;
     font-size: 14px;
-    color: #202020;
+    color: var(--color-text);
     font-weight: 400;
 }
 
-#job-count {
+.job-count {
     font-weight: 600;
-    color: #202020;
-    background: rgba(255, 255, 255, 0.2);
+    color: var(--color-text);
+    background: #f0f0f0;
     padding: 2px 8px;
     border-radius: 12px;
     font-size: 12px;
 }
 
 .job-search-card {
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
     border-radius: 8px;
     padding: 20px;
     margin-bottom: 24px;
     max-width: 600px;
 }
 
-.job-search-card h3 {
+.job-search-card-title {
     margin-top: 0;
     font-size: 18px;
     font-weight: 700;
-    color: #202020;
+    color: var(--color-text);
     margin-bottom: 16px;
 }
 
-.job-search-card h3 img {
-    width: 20px;
-    height: 20px;
+.job-search-card-title img {
+    width: 18px;
+    height: 18px;
     margin-right: 8px;
     vertical-align: middle;
 }
@@ -77,27 +88,28 @@
 .search-input {
     flex: 1;
     padding: 12px 16px;
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    border: 1px solid var(--color-border);
     border-radius: 6px 0 0 6px;
     font-size: 14px;
     outline: none;
     transition: border-color 0.2s ease;
-    background: rgba(255, 255, 255, 0.1);
-    color: #202020;
+    background: var(--color-bg);
+    color: var(--color-text);
 }
 
 .search-input:focus {
-    color: #202020;
+    border-color: var(--color-primary);
+    color: var(--color-text);
 }
 
 .search-input::placeholder {
-    color: #202020;
+    color: #9ca3af;
 }
 
 .search-btn {
     padding: 12px 16px;
-    background: rgba(255, 255, 255, 0.2);
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: #f3f4f6;
+    border: 1px solid var(--color-border);
     border-left: none;
     border-radius: 0 6px 6px 0;
     cursor: pointer;
@@ -105,7 +117,7 @@
 }
 
 .search-btn:hover {
-    background: rgba(255, 255, 255, 0.3);
+    background: #e5e7eb;
 }
 
 .search-btn img {
@@ -121,46 +133,48 @@
 
 .filter-tag {
     padding: 6px 12px;
-    background: rgba(255, 255, 255, 0.1);
+    background: #f3f4f6;
     border-radius: 12px;
     font-size: 12px;
     font-weight: 500;
-    color: #202020;
+    color: var(--color-text);
     cursor: pointer;
     transition: all 0.2s ease;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid var(--color-border);
 }
 
 .filter-tag.active {
-    background: rgba(255, 255, 255, 0.2);
-    color: #202020;
+    background: var(--color-primary);
+    color: #ffffff;
+    border-color: var(--color-primary);
 }
 
 .filter-tag:hover {
-    background: rgba(255, 255, 255, 0.15);
+    background: #e5e7eb;
 }
 
 .filter-tag.active:hover {
-    background: rgba(255, 255, 255, 0.25);
+    background: #5568d3;
 }
 
 .advanced-filter-btn {
     margin-top: 16px;
     padding: 10px 16px;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: #f3f4f6;
+    border: 1px solid var(--color-border);
     border-radius: 6px;
-    color: #202020;
+    color: var(--color-text);
     font-weight: 500;
     cursor: pointer;
     display: flex;
     align-items: center;
     gap: 8px;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
+    font-size: 14px;
 }
 
 .advanced-filter-btn:hover {
-    background: rgba(255, 255, 255, 0.2);
+    background: #e5e7eb;
 }
 
 .advanced-filter-btn img {
@@ -171,8 +185,8 @@
 .advanced-filters {
     margin-top: 16px;
     padding: 20px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: #f9fafb;
+    border: 1px solid var(--color-border);
     border-radius: 8px;
 }
 
@@ -180,16 +194,17 @@
     margin-bottom: 16px;
 }
 
-.filter-group label {
+.filter-group-label {
     display: block;
     margin-bottom: 8px;
     font-weight: 600;
-    color: #202020;
+    color: var(--color-text);
+    font-size: 14px;
     display: flex;
     align-items: center;
 }
 
-.filter-group label img {
+.filter-group-label img {
     width: 16px;
     height: 16px;
     margin-right: 8px;
@@ -201,21 +216,20 @@
     gap: 8px;
 }
 
-.filter-group select {
+.filter-select {
     padding: 10px 12px;
-    border: 1px solid #e5e7eb;
+    border: 1px solid var(--color-border);
     border-radius: 6px;
-    background: #ffffff;
-    color: #202020;
+    background: var(--color-bg);
+    color: var(--color-text);
     width: 100%;
     font-size: 14px;
     transition: border-color 0.2s ease;
 }
 
-.filter-group select:focus {
+.filter-select:focus {
     outline: none;
-    border-color: #667eea;
-    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    border-color: var(--color-primary);
 }
 
 .contract-type {
@@ -224,42 +238,34 @@
     gap: 8px;
 }
 
-.contract-type label {
+.contract-type-label {
     display: flex;
     align-items: center;
     gap: 8px;
-    color: #202020;
+    color: var(--color-text);
     cursor: pointer;
+    font-size: 14px;
 }
 
-.contract-type input[type="radio"] {
+.contract-type-input {
     margin: 0;
-}
-
-#experience-level, #location-filter {
-    padding: 8px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 4px;
-    background: rgba(255, 255, 255, 0.1);
-    color: #202020;
-    width: 100%;
 }
 
 .apply-filters-btn {
     width: 100%;
     padding: 12px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: var(--color-primary);
     border: none;
     border-radius: 6px;
     color: #ffffff;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: background 0.2s ease;
+    font-size: 14px;
 }
 
 .apply-filters-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+    background: #5568d3;
 }
 
 .job-list {
@@ -269,29 +275,28 @@
 }
 
 .job-item {
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
     border-radius: 8px;
     padding: 20px;
     margin-bottom: 16px;
-    transition: none;
+    transition: border-color 0.2s ease;
     position: relative;
     overflow: hidden;
 }
 
 .job-item:hover {
-    box-shadow: none;
-    transform: none;
+    border-color: var(--color-primary);
 }
 
-.job-item:before {
+.job-item::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     width: 4px;
     height: 100%;
-    background: linear-gradient(135deg, #008607 0%, #005a05 100%);
+    background: #10b981;
 }
 
 .job-header {
@@ -303,62 +308,61 @@
 
 .job-icon {
     flex-shrink: 0;
-    width: 40px;
-    height: 40px;
-    background: #f8f9fa;
-    border-radius: 8px;
+    width: 32px;
+    height: 32px;
+    background: #f3f4f6;
+    border-radius: 6px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .job-icon img {
-    width: 20px;
-    height: 20px;
+    width: 16px;
+    height: 16px;
 }
 
 .job-title-info {
     flex: 1;
 }
 
-.job-title-info h4 {
+.job-title {
     margin: 0 0 4px 0;
     font-size: 16px;
     font-weight: 700;
-    color: #202020;
+    color: var(--color-text);
 }
 
-.job-title-info .company {
+.job-company {
     margin: 0 0 2px 0;
     font-size: 14px;
     font-weight: 600;
-    color: #202020;
+    color: var(--color-text);
 }
 
-.job-title-info .location {
+.job-location {
     margin: 0;
     font-size: 12px;
-    color: #202020;
+    color: #9ca3af;
 }
 
 .job-match {
     flex-shrink: 0;
 }
 
-.job-match .match {
+.job-match-label {
     font-size: 12px;
     font-weight: 700;
     color: #ffffff;
-    background: linear-gradient(135deg, #ffc107 0%, #fd7e14 100%);
+    background: #fbbf24;
     padding: 4px 8px;
     border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(255, 193, 7, 0.3);
 }
 
-.job-item .description {
+.job-description {
     margin: 0 0 16px 0;
     font-size: 13px;
-    color: #202020;
+    color: var(--color-text);
     line-height: 1.5;
 }
 
@@ -368,30 +372,29 @@
     align-items: center;
 }
 
-.job-footer .salary {
+.job-salary {
     font-size: 14px;
     font-weight: 600;
-    color: #202020;
+    color: var(--color-text);
 }
 
-.job-footer .apply-btn {
+.job-apply-btn {
     padding: 6px 12px;
     border-radius: 4px;
     border: none;
-    background: linear-gradient(135deg, #8e28a7 0%, #570e92 100%);
+    background: #8b5cf6;
     color: #ffffff;
     font-weight: 600;
     font-size: 11px;
     cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: background 0.2s ease;
 }
 
-.job-footer .apply-btn:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(88, 18, 105, 0.4);
+.job-apply-btn:hover {
+    background: #7c3aed;
 }
 
-/* ===== WORLD PAGE STYLES ===== */
+/* ===== WORLD PAGE ===== */
 .world-header {
     display: flex;
     justify-content: space-between;
@@ -482,8 +485,8 @@
 }
 
 .post-author img {
-    width: 40px;
-    height: 40px;
+    width: 32px;
+    height: 32px;
     border-radius: 50%;
     margin-right: 12px;
     border: 2px solid rgba(255, 255, 255, 0.3);
@@ -575,8 +578,8 @@
 }
 
 .post-author img {
-    width: 50px;
-    height: 50px;
+    width: 32px;
+    height: 32px;
     border-radius: 50%;
     margin-right: 12px;
     border: 2px solid rgba(255, 255, 255, 0.3);

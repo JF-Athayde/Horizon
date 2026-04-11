@@ -1,5 +1,9 @@
 /* ===== FOOTER STYLES ===== */
 
+:root {
+    --color-primary: #667eea;
+}
+
 .footer {
     background: #1a1a1a;
     padding: 40px 20px 20px;
@@ -14,36 +18,38 @@
     margin: 0 auto;
 }
 
-.footer-section h4 {
+.footer-section-title {
     margin-bottom: 15px;
     font-size: 18px;
     font-weight: 600;
-    color: #667eea;
+    color: var(--color-primary);
 }
 
-.footer-section p {
+.footer-section-text {
     color: white;
     margin: 5px 0;
     line-height: 1.6;
+    font-size: 14px;
 }
 
-.footer-section ul {
+.footer-list {
     list-style: none;
     padding: 0;
 }
 
-.footer-section li {
+.footer-item {
     margin: 8px 0;
 }
 
-.footer-section a {
+.footer-link {
     color: #ffffff;
     text-decoration: none;
-    transition: color 0.3s ease;
+    transition: color 0.2s ease;
+    font-size: 14px;
 }
 
-.footer-section a:hover {
-    color: #667eea;
+.footer-link:hover {
+    color: var(--color-primary);
 }
 
 .social-link {
@@ -52,11 +58,13 @@
     padding: 5px 10px;
     background: #333;
     border-radius: 4px;
-    transition: background 0.3s ease;
+    transition: background 0.2s ease;
+    color: white;
+    text-decoration: none;
 }
 
 .social-link:hover {
-    background: #667eea;
+    background: var(--color-primary);
 }
 
 .footer-bottom {
@@ -65,4 +73,5 @@
     padding-top: 20px;
     border-top: 1px solid #333;
     color: #ccc;
+    font-size: 13px;
 }

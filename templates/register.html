@@ -1,0 +1,229 @@
+{% extends "model.html" %}
+
+{% block title %}Registrar - Horizon{% endblock %}
+
+{% block extra_head %}
+<style>
+    body {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .register-container {
+        width: 100%;
+        max-width: 450px;
+        padding: 20px;
+    }
+
+    .register-card {
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        padding: 40px 30px;
+    }
+
+    .register-header {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .register-header h1 {
+        font-size: 32px;
+        font-weight: 800;
+        color: #1a1a2e;
+        margin: 0 0 8px 0;
+    }
+
+    .register-header p {
+        color: #6b7280;
+        font-size: 14px;
+    }
+
+    .form-group {
+        margin-bottom: 18px;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        color: #202020;
+        font-weight: 600;
+        font-size: 14px;
+    }
+
+    .form-group input[type="email"],
+    .form-group input[type="password"],
+    .form-group input[type="text"] {
+        width: 100%;
+        padding: 12px 16px;
+        border: 1px solid #e5e7eb;
+        border-radius: 6px;
+        font-size: 14px;
+        transition: all 0.2s ease;
+        font-family: 'Inter', sans-serif;
+        box-sizing: border-box;
+    }
+
+    .form-group input[type="email"]:focus,
+    .form-group input[type="password"]:focus,
+    .form-group input[type="text"]:focus {
+        outline: none;
+        border-color: #667eea;
+        box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    }
+
+    .errors {
+        background: #fee;
+        border: 1px solid #fca;
+        border-radius: 6px;
+        padding: 10px 12px;
+        margin-bottom: 12px;
+        color: #dc2626;
+        font-size: 12px;
+    }
+
+    .errors ul {
+        margin: 0;
+        padding-left: 18px;
+    }
+
+    .errors li {
+        margin: 3px 0;
+    }
+
+    .submit-btn {
+        width: 100%;
+        padding: 12px 16px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border: none;
+        border-radius: 6px;
+        font-size: 15px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin-top: 12px;
+    }
+
+    .submit-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+    }
+
+    .submit-btn:active {
+        transform: translateY(0);
+    }
+
+    .register-footer {
+        text-align: center;
+        margin-top: 24px;
+        padding-top: 20px;
+        border-top: 1px solid #e5e7eb;
+    }
+
+    .register-footer p {
+        color: #6b7280;
+        font-size: 14px;
+        margin: 0;
+    }
+
+    .register-footer a {
+        color: #667eea;
+        text-decoration: none;
+        font-weight: 600;
+        transition: color 0.2s ease;
+    }
+
+    .register-footer a:hover {
+        color: #764ba2;
+    }
+
+    .password-hint {
+        font-size: 12px;
+        color: #6b7280;
+        margin-top: 4px;
+    }
+</style>
+{% endblock %}
+
+{% block header %}{% endblock %}
+
+{% block content %}
+<div class="register-container">
+    <div class="register-card">
+        <div class="register-header">
+            <h1>Horizon</h1>
+            <p>Crie sua conta de líder global</p>
+        </div>
+
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
+
+            <!-- Username Field -->
+            <div class="form-group">
+                {% if form.username.errors %}
+                    <div class="errors">
+                        {% for error in form.username.errors %}
+                            <div>{{ error }}</div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                {{ form.username.label("Nome de usuário", class="form-label") }}
+                {{ form.username(class="form-control", placeholder="escolha um nome único") }}
+            </div>
+
+            <!-- Email Field -->
+            <div class="form-group">
+                {% if form.email.errors %}
+                    <div class="errors">
+                        {% for error in form.email.errors %}
+                            <div>{{ error }}</div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                {{ form.email.label(class="form-label") }}
+                {{ form.email(class="form-control", placeholder="seu.email@example.com") }}
+            </div>
+
+            <!-- Password Field -->
+            <div class="form-group">
+                {% if form.password.errors %}
+                    <div class="errors">
+                        {% for error in form.password.errors %}
+                            <div>{{ error }}</div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                {{ form.password.label("Senha", class="form-label") }}
+                {{ form.password(class="form-control", placeholder="Mínimo 6 caracteres") }}
+                <div class="password-hint">Use uma combinação de letras, números e símbolos</div>
+            </div>
+
+            <!-- Confirm Password Field -->
+            <div class="form-group">
+                {% if form.confirm_password.errors %}
+                    <div class="errors">
+                        {% for error in form.confirm_password.errors %}
+                            <div>{{ error }}</div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                {{ form.confirm_password.label("Confirmar Senha", class="form-label") }}
+                {{ form.confirm_password(class="form-control", placeholder="Repita sua senha") }}
+            </div>
+
+            <!-- Submit Button -->
+            {{ form.submit("Criar Conta", class="submit-btn") }}
+        </form>
+
+        <div class="register-footer">
+            <p>Já tem conta? <a href="{{ url_for('auth.login') }}">Faça login aqui</a></p>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block footer %}{% endblock %}
